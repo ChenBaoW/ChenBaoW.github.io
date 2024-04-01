@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title></title>
+    <title>C常见知识点</title>
     <url>/2024/04/01/C%E5%B8%B8%E8%A7%81%E7%9F%A5%E8%AF%86%E7%82%B9/</url>
     <content><![CDATA[<h1 id="1-内存方面"><a href="#1-内存方面" class="headerlink" title="1.内存方面"></a>1.内存方面</h1><h2 id="1-1-堆与栈的区别？"><a href="#1-1-堆与栈的区别？" class="headerlink" title="1.1 堆与栈的区别？"></a>1.1 <strong>堆与栈的区别？</strong></h2><p>（1）栈的空间是系统自动分配和回收，堆的空间是用户手动分配回收（malloc，calloc，realloc，free）</p>
 <p>（2）栈的空间较小，堆的空间较大</p>
@@ -114,30 +114,11 @@
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="type">char</span> a[] = <span class="string">&quot;hello world&quot;</span>;</span><br><span class="line"><span class="type">char</span> *p = a;</span><br><span class="line">cout&lt;&lt; <span class="built_in">sizeof</span>(a) &lt;&lt; endl; <span class="comment">// 12 字节</span></span><br><span class="line">cout&lt;&lt; <span class="built_in">sizeof</span>(p) &lt;&lt; endl; <span class="comment">// 4 字节</span></span><br></pre></td></tr></table></figure>
 <p>计算数组和指针的内存容量</p>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">Func</span><span class="params">(<span class="type">char</span> a[<span class="number">100</span>])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">cout&lt;&lt; <span class="built_in">sizeof</span>(a) &lt;&lt; endl; <span class="comment">// 4 字节而不是 100 字节</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2024/03/17/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>test</title>
-    <url>/2024/04/01/test/</url>
-    <content><![CDATA[]]></content>
       <categories>
-        <category>test2</category>
+        <category>嵌入式</category>
       </categories>
       <tags>
-        <tag>test1</tag>
+        <tag>C/C++</tag>
       </tags>
   </entry>
 </search>
