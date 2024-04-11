@@ -3513,4 +3513,438 @@ Df<=min(PBS1_Tq,PBS2_Tq)2×(13×NBT−PBS2_Tq)</script><script type="math/tex; m
         <tag>Makefile</tag>
       </tags>
   </entry>
+  <entry>
+    <title>计算机网络面经</title>
+    <url>/2024/04/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%9D%A2%E7%BB%8F/</url>
+    <content><![CDATA[<h1 id="一、网络协议层次"><a href="#一、网络协议层次" class="headerlink" title="一、网络协议层次"></a>一、网络协议层次</h1><p>网络模型分层，OSI参考模型与TCP/IP模型各有优缺点，所以学习的时候通常综合两者优点：</p>
+<p><img src="/2024/04/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%9D%A2%E7%BB%8F/image/1701439941030.png" alt="1701439941030"></p>
+<p>如何理解网络模型的分层？我们先用Wireshark软件抓取一下网络通讯时的数据包，看看通讯时到底传输了什么东西，下图是我访问网站时抓取到的数据包：</p>
+<p><img src="/2024/04/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%9D%A2%E7%BB%8F/image/1701435107059.png" alt="1701435107059"></p>
+<p>根据数据包的结构可以把数据包分为这样几个部分，正好可以与网络模型相对应：</p>
+<p><img src="/2024/04/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%9D%A2%E7%BB%8F/image/1701439951221.png" alt="1701439951221"></p>
+<h2 id="OSI七层模型"><a href="#OSI七层模型" class="headerlink" title="OSI七层模型"></a>OSI七层模型</h2><p><img src="/2024/04/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%9D%A2%E7%BB%8F/image/1699173738490.png" alt="1699173738490"></p>
+<p><strong>ISO七层模型</strong>是国际标准化组织（International Organization for Standardization）制定的一个用于计算机或通信系统间互联的标准体系。</p>
+<ul>
+<li>应用层：网络服务与最终用户的一个接口，常见的协议有： <strong>HTTP FTP  SMTP SNMP DNS</strong> .</li>
+<li>表示层：数据的表示、安全、压缩。，确保一个系统的应用层所发送的信息可以被另一个系统的应用层读取。</li>
+<li>会话层：建立、管理、终止会话,对应主机进程，指本地主机与远程主机正在进行的会话.</li>
+<li>传输层：定义传输数据的协议端口号，以及流控和差错校验,协议有 <strong>TCP UDP</strong> .</li>
+<li>网络层：进行逻辑地址寻址，实现不同网络之间的路径选择,协议有 <strong>ICMP IGMP IP等</strong> .</li>
+<li>数据链路层：在物理层提供比特流服务的基础上，建立相邻结点之间的数据链路。</li>
+<li>物理层：建立、维护、断开物理连接。</li>
+</ul>
+<h2 id="五层模型"><a href="#五层模型" class="headerlink" title="五层模型"></a>五层模型</h2><p><img src="/2024/04/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%9D%A2%E7%BB%8F/image/1701501310919.png" alt="1701501310919"></p>
+<p> <strong>五层模型</strong> ：应用层、传输层、网络层、数据链路层、物理层。</p>
+<ul>
+<li><strong>应用层</strong> ：为应用程序提供交互服务。在互联网中的应用层协议很多，如域名系统DNS、HTTP协议、SMTP协议等。</li>
+<li><strong>传输层</strong> ：负责向两台主机进程之间的通信提供数据传输服务。传输层的协议主要有传输控制协议TCP和用户数据协议UDP。</li>
+<li><strong>网络层</strong> ：选择合适的路由和交换结点，确保数据及时传送。主要包括IP协议。</li>
+<li><strong>数据链路层</strong> ：在两个相邻节点之间传送数据时，数据链路层将网络层交下来的 IP 数据报组装成帧，在两个相邻节点间的链路上传送帧。</li>
+<li><strong>物理层</strong> ：实现相邻节点间比特流的透明传输，尽可能屏蔽传输介质和物理设备的差异。</li>
+</ul>
+<h3 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h3><p>DNS</p>
+<p><img src="/2024/04/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%9D%A2%E7%BB%8F/image/1701440054899.png" alt="1701440054899"></p>
+<p>FTP<br>SMTP<br>POP3<br>HTTP</p>
+<h3 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h3><p>UDP交付的是不可靠的信息，仅仅添加了端口信息和校验信息，校验还是可选的，其它的什么都没做。</p>
+<p>TCP为了交付可靠的信息，设计了一套复杂的机制。</p>
+<p>TCP链接管理：</p>
+<p><img src="/2024/04/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%9D%A2%E7%BB%8F/image/1701440289775.png" alt="1701440289775"></p>
+<p>TCP可靠传输：<br>TCP会对数据进行确认，确认号是期望收到对方下一个报文段的数据的第一个字节的序号。</p>
+<p>两种事件会导致报文段重传：</p>
+<ol>
+<li><strong>超时重传</strong>，TCP使用略大于加权平均时间RTTs作为超时时间。</li>
+<li><strong>冗余确认</strong>，当连续收到3个冗余的确认时，认为该报文段丢失，重传该报文段。</li>
+</ol>
+<p>TCP流量控制：</p>
+<p>选择重传协议：发送窗口大小&gt;1,接收窗口&gt;1</p>
+<p>TCP拥塞控制：</p>
+<p><img src="/2024/04/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%9D%A2%E7%BB%8F/image/1701440315047.png" alt="1701440315047"></p>
+<p><img src="/2024/04/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%9D%A2%E7%BB%8F/image/1701440320297.png" alt="1701440320297"></p>
+<h3 id="网络层："><a href="#网络层：" class="headerlink" title="网络层："></a>网络层：</h3><h4 id="数据平面"><a href="#数据平面" class="headerlink" title="数据平面"></a>数据平面</h4><p>IPv4</p>
+<p>子网掩码、CIDR、超网</p>
+<p>ARP协议</p>
+<p>DHCP协议</p>
+<p>ICMP协议</p>
+<p>IPv6</p>
+<h4 id="控制平面"><a href="#控制平面" class="headerlink" title="控制平面"></a>控制平面</h4><p>距离向量路由算法 RIP<br>RIP属于应用层的协议<br>RIP允许一条路由最多包含15个路由器。<br>仅和邻居路由器交流信息。<br>每30秒交换一次信息，180秒没收到信息，判定邻居没了。<br>坏消息传的慢，好消息传的快</p>
+<p>链路状态路由算法 OSPF<br>使用洪泛法向自治系统内的所有路由器发送信息。类似广播。<br>链路状态发生变化时才用洪泛法交换信息。</p>
+<p>外部网关协议 BGP<br>与BGP发言人交换信息。<br>发生变化时交换信息。</p>
+<h3 id="数据链路层"><a href="#数据链路层" class="headerlink" title="数据链路层"></a>数据链路层</h3><p>流量控制与可靠传输机制：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>停止-等待协议</th>
+<th>发送窗口大小=1,接收窗口=1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>后退N帧协议</strong></td>
+<td><strong>发送窗口大小&gt;1,接收窗口=1</strong></td>
+</tr>
+<tr>
+<td><strong>选择重传协议</strong></td>
+<td><strong>发送窗口大小&gt;1,接收窗口&gt;1</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>介质访问控制：<br>现在每个电脑都单独一个冲突域，所以介质访问控制感觉无用武之地了。</p>
+<p><img src="/2024/04/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%9D%A2%E7%BB%8F/image/1701440759281.png" alt="1701440759281"></p>
+<h3 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h3><p><img src="/2024/04/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%9D%A2%E7%BB%8F/image/1701440839192.png" alt="1701440839192"></p>
+<p>第一副图，是2相位的，此时1个码元等于1个比特。<br>第二幅图，是4相位的，此时1个码元等于2个比特。</p>
+<p>由此我们可以得出相位与一个码元的比特数关系：</p>
+<p><img src="/2024/04/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%9D%A2%E7%BB%8F/image/1701440892889.png" alt="1701440892889"></p>
+<p>波特率是传输码元的速度，单位是B/s。<br>比特率是传输比特的速度，单位是b/s。</p>
+<p>一个码元能携带2bit数据，那么比特率 = 2倍的波特率！<br>一个码元能携带4bit数据，那么比特率 = 4倍的波特率！</p>
+<h2 id="TCP-IP层次对应协议"><a href="#TCP-IP层次对应协议" class="headerlink" title="TCP/IP层次对应协议"></a>TCP/IP层次对应协议</h2><ul>
+<li>应用层：HTTP，DNS(域名解析协议)，FTP(文件传输协议)</li>
+<li>传输层：UDP,TCP</li>
+<li>网络层：IP(网际协议)，ICMP(互联网控制报文协议），IGMP（互联网组管理协议），RIP</li>
+</ul>
+<h1 id="二、TCP和UDP"><a href="#二、TCP和UDP" class="headerlink" title="二、TCP和UDP"></a>二、TCP和UDP</h1><h2 id="2-1-TCP和UDP区别"><a href="#2-1-TCP和UDP区别" class="headerlink" title="2.1 TCP和UDP区别"></a>2.1 TCP和UDP区别</h2><h3 id="UDP：对网络通讯质量要求不高时，要求网络通讯速度要快的场景"><a href="#UDP：对网络通讯质量要求不高时，要求网络通讯速度要快的场景" class="headerlink" title="UDP：对网络通讯质量要求不高时，要求网络通讯速度要快的场景"></a>UDP：对网络通讯质量要求不高时，要求网络通讯速度要快的场景</h3><ul>
+<li>无连接，发送数据之前不需要建立连接。</li>
+<li>尽最大努力交付，不保证可靠交付，不使用拥塞控制。</li>
+<li>面向报文，适合多媒体通信。</li>
+<li>支持一对一，一对多，多对一，多对多的交互通信。</li>
+<li>首部开销小，8个字节。</li>
+</ul>
+<h3 id="TCP：当对网络通讯质量有要求时，比如HTTP、HTTPS、FTP等传输文件的协议，-POP3、SMTP等邮件传输的协议"><a href="#TCP：当对网络通讯质量有要求时，比如HTTP、HTTPS、FTP等传输文件的协议，-POP3、SMTP等邮件传输的协议" class="headerlink" title="TCP：当对网络通讯质量有要求时，比如HTTP、HTTPS、FTP等传输文件的协议， POP3、SMTP等邮件传输的协议"></a>TCP：当对网络通讯质量有要求时，比如HTTP、HTTPS、FTP等传输文件的协议， POP3、SMTP等邮件传输的协议</h3><ul>
+<li>面向连接。</li>
+<li>每一条TCP有且只有两个端点，为一对一关系。</li>
+<li>提供可靠交付。</li>
+<li>全双工通信，全双工为即可传输又可接收。</li>
+<li>面向字节流。</li>
+</ul>
+<p><img src="/2024/04/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%9D%A2%E7%BB%8F/image/1699176497527.png" alt="1699176497527"></p>
+<ul>
+<li><strong>16位端口号</strong> ：源端口号，主机该报文段是来自哪里；目标端口号，要传给哪个上层协议或应用程序</li>
+<li><strong>32位序号</strong> ：一次TCP通信（从TCP连接建立到断开）过程中某一个传输方向上的字节流的每个字节的编号。</li>
+<li><strong>32位确认号</strong> ：用作对另一方发送的tcp报文段的响应。其值是收到的TCP报文段的序号值加1。</li>
+<li><strong>4位头部长度</strong> ：表示tcp头部有多少个32bit字（4字节）。因为4位最大能标识15，所以TCP头部最长是60字节。</li>
+<li><strong>6位标志位</strong> ：URG(紧急指针是否有效)，ACk（表示确认号是否有效），PSH（缓冲区尚未填满），RST（表示要求对方重新建立连接），SYN（建立连接消息标志接），FIN（表示告知对方本端要关闭连接了）</li>
+<li><strong>16位窗口大小</strong> ：是TCP流量控制的一个手段。这里说的窗口，指的是接收通告窗口。它告诉对方本端的TCP接收缓冲区还能容纳多少字节的数据，这样对方就可以控制发送数据的速度。</li>
+<li><strong>16位校验和</strong> ：由发送端填充，接收端对TCP报文段执行CRC算法以检验TCP报文段在传输过程中是否损坏。注意，这个校验不仅包括TCP头部，也包括数据部分。这也是TCP可靠传输的一个重要保障。</li>
+<li><strong>16位紧急指针</strong> ：一个正的偏移量。它和序号字段的值相加表示最后一个紧急数据的下一字节的序号。因此，确切地说，这个字段是紧急指针相对当前序号的偏移，不妨称之为紧急偏移。TCP的紧急指针是发送端向接收端发送紧急数据的方法。</li>
+</ul>
+<h2 id="2-2-TCP为什么可靠"><a href="#2-2-TCP为什么可靠" class="headerlink" title="2.2 TCP为什么可靠"></a>2.2 TCP为什么可靠</h2><ul>
+<li>乱序重排</li>
+<li>应答确认</li>
+<li>报文重传</li>
+<li>流量控制（接收方受不了）</li>
+<li>拥塞控制（网路受不了）</li>
+</ul>
+<h3 id="2-2-1-乱序重排、应答确认"><a href="#2-2-1-乱序重排、应答确认" class="headerlink" title="2.2.1 乱序重排、应答确认"></a>2.2.1 乱序重排、应答确认</h3><p>都跟<strong>序号</strong>有关。由于网络或“多线程”等因素，接收方收到的数据段很可能是乱序的，不过，因为每个TCP封装都有序号，接收方重组起来非常容易。</p>
+<p>发送方每发送一个数据段，如果都等着收到接收方的确认后再发下一个，这效率太低了。我们在解释Acknowledgement Number确认号时，曾举过一个栗子，发送方的数据有1000字节，接收方收到后的确认号填写1001，是告诉发送方前面的都收到了，下次从序号1001开始发。那么，如果发送方发送了多个数据段，共5000字节，接收方只需发一个确认号为5001的报文，是不是就可以呢？</p>
+<p>没错，TCP就是这么干的！这就大大提高了效率。至于一次收多少字节再发确认，由接收方window决定。</p>
+<p><img src="/2024/04/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%9D%A2%E7%BB%8F/image/1699174036778.png" alt="1699174036778"></p>
+<h3 id="2-2-2-报文重传"><a href="#2-2-2-报文重传" class="headerlink" title="2.2.2 报文重传"></a>2.2.2 报文重传</h3><p>一种是 <strong>超时重传</strong> ，发送方收不到确认的时候用。我们都知道网速并不是稳定的，传输时的每个报文的延时也不一样。TCP会根据报文的往返时间（RTT）自动调整超时重传时间（RTO）。发送方每发一个报文段都会开始计时，如果时间超过RTO还没收到这个报文段的确认，就重传该报文段。</p>
+<p><img src="/2024/04/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%9D%A2%E7%BB%8F/image/1699174097320.png" alt="1699174097320"></p>
+<p>另一种方法是 <strong>快速重传</strong> ，发送的数据在路上丢失的时候用。</p>
+<p>我们看下图：</p>
+<p><img src="/2024/04/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%9D%A2%E7%BB%8F/image/1699174127387.png" alt="1699174127387"></p>
+<p>接收方收到序号1后，回复确认号2，希望下次收到序号2的报文段，但却乱序收到比序号2大的3、4、5报文段，于是连续发出确认号为2的报文段。如果发送方连续三次收到重复的确认号，立即重发该报文段，而不管是否超时。</p>
+<h3 id="2-2-3-流量控制（滑动窗口解决）"><a href="#2-2-3-流量控制（滑动窗口解决）" class="headerlink" title="2.2.3 流量控制（滑动窗口解决）"></a>2.2.3 流量控制（滑动窗口解决）</h3><p>首先要明白一点，应用程序不论发送还是接收数据，都会先把数据放入缓冲区，再从缓冲区中发出或读取数据。就像秘书，先把事情整理归纳好，再一次性向你汇报。</p>
+<p>这个缓冲区大小，反映了应用程序一次能处理数据的能力。如果接收方应用程序处理速度比发送方的发送速度慢，就会造成接收方缓冲区“溢出”。实际上，发送方发送速度和接收方处理速度很难一致。</p>
+<p>这就需要window来调整了。</p>
+<p>TCP在三次握手建立连接时，会协商双方缓冲区window大小。如果因为接收方处理速度较慢，接收方会通过window告知发送方，实现动态调整，避免“溢出”。</p>
+<blockquote>
+<p><strong>TCP滑动窗口分为接受窗口，发送窗口</strong><br>滑动窗口协议是<strong>传输层进行流控</strong>的一种措施， <strong>接收方通过通告发送方自己的窗口大小</strong> ，从而控制发送方的发送速度，从而达到防止发送方发送速度过快而导致自己被淹没的目的。</p>
+<p>对ACK的再认识，ack通常被理解为收到数据后给出的一个确认ACK，ACK包含两个非常重要的信息：</p>
+<p><strong>一是期望接收到的下一字节的序号n，该n代表接收方已经接收到了前n-1字节数据，此时如果接收方收到第n+1字节数据而不是第n字节数据，**</strong>接收方是不会发送序号为n+2的ACK的。**举个例子，假如接收端收到1-1024字节，它会发送一个确认号为1025的ACK,但是接下来收到的是2049-3072，它是不会发送确认号为3072的ACK,而依旧发送1025的ACK。</p>
+<p>二是当前的窗口大小m，如此发送方在接收到ACK包含的这两个数据后就可以计算出还可以发送多少字节的数据给对方，假定当前发送方已发送到第x字节，则可以发送的字节数就是y=m-(x-n).这就是滑动窗口控制流量的基本原理</p>
+<p>重点：发送方根据收到ACK当中的期望收到的下一个字节的序号n以及窗口m，还有当前已经发送的字节序号x，算出还可以发送的字节数。</p>
+</blockquote>
+<h3 id="2-2-4-拥塞控制（拥塞窗口）"><a href="#2-2-4-拥塞控制（拥塞窗口）" class="headerlink" title="2.2.4 拥塞控制（拥塞窗口）"></a><strong>2.2.4 拥塞控制（拥塞窗口）</strong></h3><p>拥塞控制是 <strong>作用于网络的，防止过多的数据包注入到网络中，避免出现网络负载过大的情况</strong> 。它的目标主要是最大化利用网络上瓶颈链路的带宽。它跟<strong>流量控制</strong>又有什么区别呢？流量控制是作用于接收者的，根据 <strong>接收端的实际接收能力控制发送速度</strong> ，防止分组丢失的。</p>
+<p>我们可以把网络链路比喻成一根水管，如果我们想最大化利用网络来传输数据，那就是尽快让水管达到最佳充满状态。</p>
+<p><img src="/2024/04/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%9D%A2%E7%BB%8F/image/1701594728488.png" alt="1701594728488"></p>
+<p>发送方维护一个<strong>拥塞窗口cwnd（congestion window）</strong> 的变量，用来估算在一段时间内这条链路（水管）可以承载和运输的数据（水）的数量。它大小代表着网络的拥塞程度，并且是动态变化的，但是为了达到最大的传输效率，我们该如何知道这条水管的运送效率是多少呢？</p>
+<p>一个比较简单的方法就是不断增加传输的水量，直到水管快要爆裂为止（对应到网络上就是发生丢包），用 TCP的描述就是：</p>
+<blockquote>
+<p>★</p>
+<p>只要网络中没有出现拥塞，拥塞窗口的值就可以再增大一些，以便把更多的数据包发送出去，但只要网络出现拥塞，拥塞窗口的值就应该减小一些，以减少注入到网络中的数据包数。</p>
+</blockquote>
+<ul>
+<li>慢开始</li>
+<li>拥塞避免</li>
+<li>快速重传</li>
+<li>快速恢复</li>
+</ul>
+<p>swnd发送窗口 = min(cwnd拥塞窗口, rwnd接收窗口)</p>
+<h4 id="2-2-4-1-慢开始"><a href="#2-2-4-1-慢开始" class="headerlink" title="2.2.4.1 慢开始"></a>2.2.4.1 慢开始</h4><p>假设当前发送方拥塞窗口cwnd的值为1，而发送窗口swnd等于拥塞窗口cwnd，因此发送方当前只能发送一个数据报文段（拥塞窗口cwnd的值是几，就能发送几个数据报文段），接收方收到该数据报文段后，给发送方回复一个确认报文段，发送方收到该确认报文后，将拥塞窗口的值变为2。即收到多少确认报文就增加多少。所以拥塞窗口是<strong>以指数型增长的（1,2,4,8…）</strong>。一直到cwnd等于<strong>ssthresh阈值</strong>时启动<strong>拥塞控制</strong>算法。如下图，慢开始增长速度并不慢，只是开始时向网络注入数据报文较少。</p>
+<p><img src="/2024/04/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%9D%A2%E7%BB%8F/image/1699174543142.png" alt="1699174543142"></p>
+<h4 id="2-2-4-2-拥塞避免"><a href="#2-2-4-2-拥塞避免" class="headerlink" title="2.2.4.2 拥塞避免"></a>2.2.4.2 拥塞避免</h4><p>进入拥塞避免阶段时， <strong>cwnd每次只能加1</strong> 。当出现报文丢失时，丢失的报文的重传计时器超时后会被判断出现拥塞，此时需要更改cwnd和ssthresh。</p>
+<p>出现拥塞：</p>
+<blockquote>
+<p>1、ssthresh更新为出现拥塞时cwnd数值的一半；</p>
+<p>2、cwnd赋值为1；</p>
+<p>3、重新执行<strong>慢开始</strong>算法。</p>
+</blockquote>
+<p>如下图所示，初始ssthresh为16，当cwnd小于ssthresh成指数型增长，当cwnd &gt; ssthresh时，cwnd逐次增加1。当其值为24时，出现丢包，此时判断为拥塞，将ssthresh调整为出现拥塞时的一般，即12。之后cwnd赋值为1，重新执行慢开始算法。由下图仍可见，拥塞避免并不是完全避免拥塞，而是将拥塞窗口的增长变为线性的，使网络不容易出现拥塞。</p>
+<p><img src="/2024/04/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%9D%A2%E7%BB%8F/image/1699174678186.png" alt="1699174678186"></p>
+<p><strong>以上的两个算法存在不足之处，当个别报文在网络中丢失时，可能实际上网络并未发生拥塞。这将导致发送端超时重传，并误以为网络发送拥塞。由于每次拥塞控制都会将cwnd设置为1，这严重降低了传输效率。由此，新增了快速重传算法和快速恢复算法。</strong></p>
+<h4 id="2-2-4-3-快重传"><a href="#2-2-4-3-快重传" class="headerlink" title="2.2.4.3 快重传"></a>2.2.4.3 快重传</h4><p><img src="/2024/04/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%9D%A2%E7%BB%8F/image/1699174740174.png" alt="1699174740174"></p>
+<h4 id="2-2-4-4-快恢复（区别丢失个别报文还是网络拥塞，防止误判）"><a href="#2-2-4-4-快恢复（区别丢失个别报文还是网络拥塞，防止误判）" class="headerlink" title="2.2.4.4 快恢复（区别丢失个别报文还是网络拥塞，防止误判）"></a>2.2.4.4 快恢复（区别丢失个别报文还是网络拥塞，防止误判）</h4><p>如下，发送端连续接收端<strong>三个重复确认报文</strong>后可以确认只是丢失了个别报文（ <strong>确认报文可以传回，网络没有拥塞</strong> ），此时不需要启动慢开始算法。此时 <strong>将ssthresh和cwnd赋值为此时的cwnd的一半</strong> ，然后执行拥塞避免算法。具体机制如下图所示。</p>
+<p><img src="/2024/04/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%9D%A2%E7%BB%8F/image/1699175640464.png" alt="1699175640464"></p>
+<p>当然也有的快速回复算法，将cwnd的值增大3，即cwnd = ssthresh + 3（ssthresh为连续三次受到确认号时的cwnd值的一半）。因为接收端缓存中已经存在了三个数据报文，这三个报文不会再占用网络资源，所以拥塞窗口可以适当增大。这么做也是为了尽可能提高吞吐量。</p>
+<h2 id="2-3-三次握手"><a href="#2-3-三次握手" class="headerlink" title="2.3 三次握手"></a>2.3 三次握手</h2><p>假设发送端为客户端，接收端为服务端。开始时客户端和服务端的状态都是 <code>CLOSED</code>。</p>
+<p><img src="https://uploadfiles.nowcoder.com/files/20221106/698656726_1667694705933/%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%9B%BE%E8%A7%A3.png" alt></p>
+<ol>
+<li>第一次握手：客户端向服务端发起建立连接请求，客户端会随机生成一个起始序列号x，客户端向服务端发送的字段中包含标志位 <code>SYN=1</code>，序列号 <code>seq=x</code>。第一次握手前客户端的状态为 <code>CLOSE</code>，第一次握手后客户端的状态为 <code>SYN-SENT</code>。此时服务端的状态为 <code>LISTEN</code>。</li>
+<li>第二次握手：服务端在收到客户端发来的报文后，会随机生成一个服务端的起始序列号y，然后给客户端回复一段报文，其中包括标志位 <code>SYN=1</code>，<code>ACK=1</code>，序列号 <code>seq=y</code>，确认号 <code>ack=x+1</code>。第二次握手前服务端的状态为 <code>LISTEN</code>，第二次握手后服务端的状态为 <code>SYN-RCVD</code>，此时客户端的状态为 <code>SYN-SENT</code>。（其中 <code>SYN=1</code>表示要和客户端建立一个连接，<code>ACK=1</code>表示确认序号有效）</li>
+<li>第三次握手：客户端收到服务端发来的报文后，会再向服务端发送报文，其中包含标志位 <code>ACK=1</code>，序列号 <code>seq=x+1</code>，确认号 <code>ack=y+1</code>。第三次握手前客户端的状态为 <code>SYN-SENT</code>，第三次握手后客户端和服务端的状态都为 <code>ESTABLISHED</code>。<strong>此时连接建立完成。</strong></li>
+</ol>
+<h3 id="2-3-1-两次握手可以吗？"><a href="#2-3-1-两次握手可以吗？" class="headerlink" title="2.3.1 两次握手可以吗？"></a>2.3.1 两次握手可以吗？</h3><p>第三次握手主要为了<strong>防止已失效的连接请求报文段</strong>突然又传输到了服务端，导致产生问题。</p>
+<ul>
+<li>比如客户端A发出连接请求，可能因为网络阻塞原因，A没有收到确认报文，于是A再重传一次连接请求。</li>
+<li>连接成功，等待数据传输完毕后，就释放了连接。</li>
+<li>然后A发出的第一个连接请求等到连接释放以后的某个时间才到达服务端B，此时B误认为A又发出一次新的连接请求，于是就向A发出确认报文段。</li>
+<li>如果不采用三次握手，只要B发出确认，就建立新的连接了，<strong>此时A不会响应B的确认且不发送数据，则B一直等待A发送数据，浪费资源。</strong></li>
+</ul>
+<h2 id="2-4-四次挥手"><a href="#2-4-四次挥手" class="headerlink" title="2.4 四次挥手"></a>2.4 四次挥手</h2><p><img src="https://uploadfiles.nowcoder.com/files/20221106/698656726_1667694706020/%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B0.png" alt></p>
+<ol>
+<li>A的应用进程先向其TCP发出连接释放报文段（<code>FIN=1，seq=u</code>），并停止再发送数据，主动关闭TCP连接，进入 <code>FIN-WAIT-1</code>（终止等待1）状态，等待B的确认。</li>
+<li>B收到连接释放报文段后即发出确认报文段（<code>ACK=1，ack=u+1，seq=v</code>），B进入 <code>CLOSE-WAIT</code>（关闭等待）状态，此时的TCP处于半关闭状态，A到B的连接释放。</li>
+<li>A收到B的确认后，进入 <code>FIN-WAIT-2</code>（终止等待2）状态，等待B发出的连接释放报文段。</li>
+<li>B发送完数据，就会发出连接释放报文段（<code>FIN=1，ACK=1，seq=w，ack=u+1</code>），B进入 <code>LAST-ACK</code>（最后确认）状态，等待A的确认。</li>
+<li>A收到B的连接释放报文段后，对此发出确认报文段（<code>ACK=1，seq=u+1，ack=w+1</code>），A进入 <code>TIME-WAIT</code>（时间等待）状态。此时TCP未释放掉，需要经过时间等待计时器设置的时间 <code>2MSL</code>（最大报文段生存时间）后，A才进入 <code>CLOSED</code>状态。B收到A发出的确认报文段后关闭连接，若没收到A发出的确认报文段，B就会重传连接释放报文段。</li>
+</ol>
+<h3 id="2-4-1-第四次挥手为什么要等待2MSL？"><a href="#2-4-1-第四次挥手为什么要等待2MSL？" class="headerlink" title="2.4.1 第四次挥手为什么要等待2MSL？"></a>2.4.1 第四次挥手为什么要等待2MSL？</h3><ul>
+<li><strong>保证A发送的最后一个ACK报文段能够到达B</strong> 。这个 <code>ACK</code>报文段有可能丢失，B收不到这个确认报文，就会超时重传连接释放报文段，然后A可以在 <code>2MSL</code>时间内收到这个重传的连接释放报文段，接着A重传一次确认，重新启动2MSL计时器，最后A和B都进入到 <code>CLOSED</code>状态，若A在 <code>TIME-WAIT</code>状态不等待一段时间，而是发送完ACK报文段后立即释放连接，则无法收到B重传的连接释放报文段，所以不会再发送一次确认报文段，B就无法正常进入到 <code>CLOSED</code>状态。</li>
+<li><strong>防止已失效的连接请求报文段出现在本连接中</strong> 。A在发送完最后一个 <code>ACK</code>报文段后，再经过2MSL，就可以使这个连接所产生的所有报文段都从网络中消失，使下一个新的连接中不会出现旧的连接请求报文段。</li>
+</ul>
+<h3 id="2-4-2-为什么是四次挥手？"><a href="#2-4-2-为什么是四次挥手？" class="headerlink" title="2.4.2 为什么是四次挥手？"></a>2.4.2 为什么是四次挥手？</h3><p>因为当Server端收到Client端的 <code>SYN</code>连接请求报文后，可以直接发送 <code>SYN+ACK</code>报文。 <strong>但是在关闭连接时，当Server端收到Client端发出的连接释放报文时，很可能并不会立即关闭SOCKET</strong> ，所以Server端先回复一个 <code>ACK</code>报文，告诉Client端我收到你的连接释放报文了。只有等到Server端所有的报文都发送完了，这时Server端才能发送连接释放报文，之后两边才会真正的断开连接。故需要四次挥手。</p>
+<h1 id="三、HTTP"><a href="#三、HTTP" class="headerlink" title="三、HTTP"></a>三、HTTP</h1><h2 id="3-1-HTTP常用的状态码及其含义"><a href="#3-1-HTTP常用的状态码及其含义" class="headerlink" title="3.1 HTTP常用的状态码及其含义"></a>3.1 HTTP常用的状态码及其含义</h2><p><strong>思路:</strong> 这道面试题主要考察候选人，是否掌握HTTP状态码这个基础知识点。</p>
+<p><img src="/2024/04/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%9D%A2%E7%BB%8F/image/1701499614783.png" alt="1701499614783"></p>
+<p><strong>日常开发中的这几个状态码的含义：</strong></p>
+<p><img src="https://file+.vscode-resource.vscode-cdn.net/f%3A/Git_repository/note/%E5%B5%8C%E5%85%A5%E5%BC%8F%E9%9D%A2%E7%BB%8F/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%9D%A2%E7%BB%8F/1701499597174.png" alt="1701499597174"></p>
+<h2 id="3-2-HTTP-常用的请求方式，区别和用途"><a href="#3-2-HTTP-常用的请求方式，区别和用途" class="headerlink" title="3.2 HTTP 常用的请求方式，区别和用途"></a>3.2 HTTP 常用的请求方式，区别和用途</h2><p><strong>思路:</strong> 这道题主要考察候选人，是否掌握<strong>HTTP请求方式</strong>这个基础知识点，我们用得比较多就是<strong>GET和POST</strong>啦。</p>
+<p><img src="/2024/04/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%9D%A2%E7%BB%8F/image/1701499651142.png" alt="1701499651142"></p>
+<h2 id="3-3-HTTP端口及对应的服务"><a href="#3-3-HTTP端口及对应的服务" class="headerlink" title="3.3 HTTP端口及对应的服务"></a>3.3 HTTP端口及对应的服务</h2><p><img src="/2024/04/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%9D%A2%E7%BB%8F/image/1701499656454.png" alt="1701499656454"></p>
+<h2 id="3-4-如何理解HTTP协议是无状态的"><a href="#3-4-如何理解HTTP协议是无状态的" class="headerlink" title="3.4 如何理解HTTP协议是无状态的"></a>3.4 如何理解HTTP协议是无状态的</h2><p><strong>思路:</strong> 这道题主要考察候选人，是否理解Http协议，它为什么是无状态的呢？如何使它有状态呢？</p>
+<p>如何理解无状态这个词呢？</p>
+<blockquote>
+<p>★</p>
+<p>当浏览器第一次发送请求给服务器时，服务器响应了；如果同个浏览器发起第二次请求给服务器时，它还是会响应，但是呢，服务器不知道你就是刚才的那个浏览器。简言之，服务器不会去记住你是谁，所以是无状态协议。</p>
+</blockquote>
+<p>可以通过一个生活中的例子，来更好理解并记住它：</p>
+<p><strong>有状态场景：</strong></p>
+<ul>
+<li>小红：今天吃啥子？</li>
+<li>小明：罗非鱼~</li>
+<li>小红：味道怎么样呀？</li>
+<li>小明：还不错，好香。</li>
+</ul>
+<p><strong>无状态的场景：</strong></p>
+<ul>
+<li>小红：今天吃啥子？</li>
+<li>小明：罗非鱼~</li>
+<li>小红：味道怎么样呀？</li>
+<li><p>小明：？啊？你说啥？什么鬼？什么味道怎么样？</p>
+<p><strong>Http加了Cookie的话</strong> ：</p>
+</li>
+<li><p>小红：今天吃啥子？</p>
+</li>
+<li>小明：罗非鱼~</li>
+<li>小红：你今天吃的罗非鱼，味道怎么样呀？</li>
+<li>小明：还不错，好香。</li>
+</ul>
+<h2 id="3-5-从浏览器地址栏输入url到显示主页的过程"><a href="#3-5-从浏览器地址栏输入url到显示主页的过程" class="headerlink" title="3.5 从浏览器地址栏输入url到显示主页的过程"></a>3.5 从浏览器地址栏输入url到显示主页的过程</h2><p><strong>思路:</strong> 这道题主要考察的知识点是HTTP的请求过程， <strong>DNS解析，TCP三次握手，四次挥手这几个要点</strong> ，我们都可以讲下。</p>
+<ol>
+<li>DNS解析，查找域名对应的IP地址。</li>
+<li>与服务器通过三次握手，建立TCP连接</li>
+<li>向服务器发送HTTP请求</li>
+<li>服务器处理请求，返回网页内容</li>
+<li>浏览器解析并渲染页面</li>
+<li>TCP四次挥手，连接结束</li>
+</ol>
+<p><img src="/2024/04/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%9D%A2%E7%BB%8F/image/1701500068673.png" alt="1701500068673"></p>
+<h2 id="3-6-说下HTTP-1-0，1-1，2-0的区别"><a href="#3-6-说下HTTP-1-0，1-1，2-0的区别" class="headerlink" title="3.6 说下HTTP/1.0，1.1，2.0的区别"></a>3.6 说下HTTP/1.0，1.1，2.0的区别</h2><p><strong>思路:</strong> 这道题主要考察的知识点是HTTP几个版本的区别，我们记住<strong>HTTP/1.0</strong>默认是短连接，可以强制开启，HTTP/1.1默认长连接，HTTP/2.0采用<strong>多路复用</strong>就差不多啦。</p>
+<h3 id="HTTP-1-0"><a href="#HTTP-1-0" class="headerlink" title="HTTP/1.0"></a><strong>HTTP/1.0</strong></h3><ul>
+<li>默认使用 <strong>短连接</strong> ，每次请求都需要建立一个TCP连接。它可以设置 <code>Connection: keep-alive</code> 这个字段，强制开启长连接。</li>
+</ul>
+<h3 id="HTTP-1-1"><a href="#HTTP-1-1" class="headerlink" title="HTTP/1.1"></a><strong>HTTP/1.1</strong></h3><ul>
+<li>引入了持久连接，即TCP连接默认不关闭，可以被多个请求复用。</li>
+<li>分块传输编码，即服务端没产生一块数据，就发送一块，用”流模式”取代”缓存模式”。</li>
+<li>管道机制，即在同一个TCP连接里面，客户端可以同时发送多个请求。</li>
+</ul>
+<h3 id="HTTP-2-0"><a href="#HTTP-2-0" class="headerlink" title="HTTP/2.0"></a><strong>HTTP/2.0</strong></h3><ul>
+<li>二进制协议，1.1版本的头信息是文本（ASCII编码），数据体可以是文本或者二进制；2.0中，头信息和数据体都是二进制。</li>
+<li>完全多路复用，在一个连接里，客户端和浏览器都可以同时发送多个请求或回应，而且不用按照顺序一一对应。</li>
+<li>报头压缩，HTTP协议不带有状态，每次请求都必须附上所有信息。Http/2.0引入了头信息压缩机制，使用gzip或compress压缩后再发送。</li>
+<li>服务端推送，允许服务器未经请求，主动向客户端发送资源。</li>
+</ul>
+<h2 id="3-7-POST和GET有哪些区别？"><a href="#3-7-POST和GET有哪些区别？" class="headerlink" title="3.7 POST和GET有哪些区别？"></a>3.7 POST和GET有哪些区别？</h2><p><strong>思路:</strong> 这道题主要考察的知识点是POST和GET的区别，可以从<strong>数据包、编码方式、请求参数、收藏为书签、历史记录、安全性</strong>等几方面去回答哈。</p>
+<p><img src="/2024/04/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%9D%A2%E7%BB%8F/image/1701500075739.png" alt="1701500075739"></p>
+<h2 id="3-8-在交互过程中如果数据传送完了，还不想断开连接怎么办，怎么维持？"><a href="#3-8-在交互过程中如果数据传送完了，还不想断开连接怎么办，怎么维持？" class="headerlink" title="3.8 在交互过程中如果数据传送完了，还不想断开连接怎么办，怎么维持？"></a>3.8 在交互过程中如果数据传送完了，还不想断开连接怎么办，怎么维持？</h2><p>这个问题记住 <code>keep-alive</code>就好，也就是说，在HTTP中响应体的<strong>Connection</strong>字段指定为 <code>keep-alive</code>即可</p>
+<h2 id="3-9-HTTP-如何实现长连接？在什么时候会超时？"><a href="#3-9-HTTP-如何实现长连接？在什么时候会超时？" class="headerlink" title="3.9 HTTP 如何实现长连接？在什么时候会超时？"></a>3.9 HTTP 如何实现长连接？在什么时候会超时？</h2><p><strong>思路:</strong> 这道题实际上是考察TCP长连接的知识点，HTTP的长连接实质是指TCP的长连接。至于什么时候超时，我们记住这几个参数如 <strong>tcp_keepalive_time</strong> 、<strong>tcp_keepalive_probes</strong>就好啦</p>
+<h3 id="什么是HTTP的长连接？"><a href="#什么是HTTP的长连接？" class="headerlink" title="什么是HTTP的长连接？"></a><strong>什么是HTTP的长连接？</strong></h3><ol>
+<li>HTTP分为长连接和短连接， <strong>本质上说的是TCP的长短连接</strong> 。TCP连接是一个双向的通道，它是可以保持一段时间不关闭的，因此TCP连接才具有真正的长连接和短连接这一说法哈。</li>
+<li>TCP长连接可以复用一个TCP连接，来发起多次的HTTP请求，这样就可以减少资源消耗，比如一次请求HTML，如果是短连接的话，可能还需要请求后续的JS/CSS。</li>
+</ol>
+<p><strong>如何设置长连接？</strong></p>
+<p>通过在头部（请求和响应头）设置<strong>Connection</strong>字段指定为 <code>keep-alive</code>，HTTP/1.0协议支持，但是是默认关闭的，从HTTP/1.1以后，连接默认都是长连接。</p>
+<p><strong>在什么时候会超时呢？</strong></p>
+<blockquote>
+<p>★</p>
+<p>HTTP一般会有httpd守护进程，里面可以设置 <strong>keep-alive timeout</strong> ，当tcp连接闲置超过这个时间就会关闭，也可以在HTTP的header里面设置超时时间</p>
+<ul>
+<li>TCP 的<strong>keep-alive</strong>包含三个参数，支持在系统内核的net.ipv4里面设置；当 TCP 连接之后，闲置了 <strong>tcp_keepalive_time</strong> ，则会发生侦测包，如果没有收到对方的ACK，那么会每隔 tcp_keepalive_intvl再发一次，直到发送了 <strong>tcp_keepalive_probes</strong> ，就会丢弃该连接。</li>
+</ul>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1. tcp_keepalive_intvl = 15</span><br><span class="line">2. tcp_keepalive_probes = 5</span><br><span class="line">3. tcp_keepalive_time = 1800</span><br></pre></td></tr></table></figure>
+<h2 id="3-10-HTTP-与-HTTPS-的区别。"><a href="#3-10-HTTP-与-HTTPS-的区别。" class="headerlink" title="3.10 HTTP 与 HTTPS 的区别。"></a>3.10 HTTP 与 HTTPS 的区别。</h2><p><strong>思路:</strong> 这道题实际上考察的知识点是HTTP与HTTPS的区别，这个知识点非常重要，可以<strong>从安全性、数据是否加密、默认端口</strong>等这几个方面去回答哈。其实，当你理解HTTPS的整个流程，就可以很好回答这个问题啦。</p>
+<p> <strong>我的答案如下</strong> ：</p>
+<p>HTTP，即超文本传输协议，是一个基于TCP/IP通信协议来传递明文数据的协议。HTTP会存在这 <strong>几个问题</strong> ：</p>
+<ul>
+<li>请求信息是明文传输，容易被窃听截取。</li>
+<li>没有验证对方身份，存在被冒充的风险</li>
+<li>数据的完整性未校验，容易被中间人篡改</li>
+</ul>
+<p>为了解决Http存在的问题，Https出现啦。</p>
+<p><strong>Https是什么？</strong></p>
+<p> <strong>HTTPS= HTTP+SSL/TLS</strong> ，可以理解Https是身披SSL(Secure Socket Layer，安全套接层)的HTTP。</p>
+<p>它们主要区别如下：</p>
+<p><img src="/2024/04/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%9D%A2%E7%BB%8F/image/1701500712179.png" alt="1701500712179"></p>
+<h2 id="3-11-Https流程是怎样的？"><a href="#3-11-Https流程是怎样的？" class="headerlink" title="3.11 Https流程是怎样的？"></a>3.11 Https流程是怎样的？</h2><p><strong>思路:</strong> 这道题实际上考察的知识点是HTTPS的工作流程，大家需要回答这几个要点， <strong>公私钥、数字证书、加密、对称加密、非对称加密</strong> 。</p>
+<ul>
+<li>HTTPS = HTTP + SSL/TLS，也就是用SSL/TLS对数据进行加密和解密，Http进行传输。</li>
+<li>SSL，即Secure Sockets Layer（安全套接层协议），是网络通信提供安全及数据完整性的一种安全协议。</li>
+<li>TLS，即Transport Layer Security(安全传输层协议)，它是SSL3.0的后续版本。</li>
+</ul>
+<p><img src="/2024/04/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%9D%A2%E7%BB%8F/image/1701500983984.png" alt="1701500983984"></p>
+<h3 id="Https工作流程"><a href="#Https工作流程" class="headerlink" title="Https工作流程"></a>Https工作流程</h3><ol>
+<li>客户端发起Https请求，连接到服务器的443端口。</li>
+<li>服务器必须要有一套数字证书（证书内容有公钥、证书颁发机构、失效日期等）。</li>
+<li>服务器将自己的数字证书发送给客户端（公钥在证书里面，私钥由服务器持有）。</li>
+<li>客户端收到数字证书之后，会验证证书的合法性。如果证书验证通过，就会生成一个随机的对称密钥，用证书的公钥加密。</li>
+<li>客户端将公钥加密后的密钥发送到服务器。</li>
+<li>服务器接收到客户端发来的密文密钥之后，用自己之前保留的私钥对其进行非对称解密，解密之后就得到客户端的密钥，然后用客户端密钥对返回数据进行对称加密，酱紫传输的数据都是密文啦。</li>
+<li>服务器将加密后的密文返回到客户端。</li>
+<li>客户端收到后，用自己的密钥对其进行对称解密，得到服务器返回的数据。</li>
+</ol>
+<h2 id="3-12-Http请求的过程与原理"><a href="#3-12-Http请求的过程与原理" class="headerlink" title="3.12 Http请求的过程与原理"></a>3.12 Http请求的过程与原理</h2><p><strong>思路:</strong> HTTP请求，一个非常非常基础的知识点，一定需要掌握的。其实觉得跟浏览器地址栏输入url到显示主页这道题有点类似。</p>
+<p> <strong>我的答案如下</strong> ：</p>
+<p>HTTP是一个基于TCP/IP协议来传递数据的超文本传输协议，传输的数据类型有HTML,图片等。以访问百度有例子，看下一次Http的请求过程吧</p>
+<h3 id="Http请求过程"><a href="#Http请求过程" class="headerlink" title="Http请求过程"></a>Http请求过程</h3><ol>
+<li>客户端进行DNS域名解析，得到对应的IP地址</li>
+<li>根据这个IP，找到对应的服务器建立连接（三次握手）</li>
+<li>建立TCP连接后发起HTTP请求（一个完整的http请求报文）</li>
+<li>服务器响应HTTP请求，客户端得到html代码</li>
+<li>客户端解析html代码，用html代码中的资源(如js,css,图片等等)渲染页面。</li>
+<li>服务器关闭TCP连接（四次挥手）</li>
+</ol>
+<h2 id="3-13-说说HTTP的状态码，301和302的区别？"><a href="#3-13-说说HTTP的状态码，301和302的区别？" class="headerlink" title="3.13 说说HTTP的状态码，301和302的区别？"></a>3.13 说说HTTP的状态码，301和302的区别？</h2><p><strong>思路:</strong> 这道题考查的知识点，也是HTTP状态码，302和301都有重定向的含义，但是它们也是有区别的。</p>
+<ul>
+<li>301：（永久性转移）请求的网页已被永久移动到新位置。服务器返回此响应时，会自动将请求者转到新位置。</li>
+<li>302：（暂时性转移）服务器目前正从不同位置的网页响应请求，但请求者应继续使用原有位置来进行以后的请求。此代码与响应GET和HEAD请求的301代码类似，会自动将请求者转到不同的位置。</li>
+</ul>
+<p>网上有个很<strong>形象的例子</strong>比喻：</p>
+<blockquote>
+<p>★</p>
+<p>当一个网站或者网页24—48小时内临时移动到一个新的位置，这时候就要进行302跳转，打个比方说，我有一套房子，但是最近走亲戚去亲戚家住了，过两天我还回来的。而使用301跳转的场景就是之前的网站因为某种原因需要移除掉，然后要到新的地址访问，是永久性的，就比如你的那套房子其实是租的，现在租期到了，你又在另一个地方找到了房子，之前租的房子不住了。</p>
+</blockquote>
+<h2 id="3-14-说说什么是数字签名？什么是数字证书？"><a href="#3-14-说说什么是数字签名？什么是数字证书？" class="headerlink" title="3.14 说说什么是数字签名？什么是数字证书？"></a>3.14 说说什么是数字签名？什么是数字证书？</h2><p><strong>思路:</strong> 这道题考查的知识点，不仅仅是数字签名，数字证书，很可能面试官也会问你https的原理的，因为https原理跟数字证书有关的哈，大家需要掌握https原理哦。</p>
+<p>数字证书是指在互联网通讯中标志通讯各方身份信息的一个数字认证，人们可以在网上用它来识别对方的身份。它的出现，是为了避免身份被篡改冒充的。比如Https的数字证书，就是为了避免公钥被中间人冒充篡改：</p>
+<p><img src="https://static.mianbaoban-assets.eet-china.com/xinyu-images/MBXY-CR-203531ea8afd45f9e5977a413fdf0d39.png" alt="img"></p>
+<p><strong>数字证书构成</strong></p>
+<ul>
+<li>公钥和个人等信息，经过Hash摘要算法加密，形成消息摘要；将消息摘要拿到拥有公信力的认证中心（CA），用它的私钥对消息摘要加密，形成 <strong>数字签名</strong> 。</li>
+<li>公钥和个人信息、数字签名共同构成 <strong>数字证书</strong> 。</li>
+</ul>
+<h2 id="3-15-对称加密与非对称加密有什么区别"><a href="#3-15-对称加密与非对称加密有什么区别" class="headerlink" title="3.15 对称加密与非对称加密有什么区别"></a>3.15 对称加密与非对称加密有什么区别</h2><p><strong>思路:</strong> 这道题考察的知识点是对称加密与非对称加密算法，什么是对称加密，什么是非对称加密呢？</p>
+<p>对称加密：指加密和解密使用同一密钥，优点是运算速度较快，缺点是如何安全将密钥传输给另一方。常见的对称加密算法有：DES、AES等。</p>
+<p><img src="/2024/04/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%9D%A2%E7%BB%8F/image/1701501033640.png" alt="1701501033640"><br>                                                    对称加密</p>
+<p>非对称加密：指的是加密和解密使用不同的密钥（即公钥和私钥）。公钥与私钥是成对存在的，如果用公钥对数据进行加密，只有对应的私钥才能解密。常见的非对称加密算法有RSA。</p>
+<p><img src="/2024/04/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%9D%A2%E7%BB%8F/image/1701501048176.png" alt="1701501048176"><br>                                                    非对称加密</p>
+<h2 id="3-16-说说DNS的解析过程？"><a href="#3-16-说说DNS的解析过程？" class="headerlink" title="3.16 说说DNS的解析过程？"></a>3.16 说说DNS的解析过程？</h2><p><strong>思路:</strong> 这道题考察的知识点是 <strong>DNS域名解析</strong> ，http请求的过程，是涉及到DNS域名解析的，这道面试题也挺经典的，大家可以看下《图解HTTP》那本书哈。</p>
+<blockquote>
+<p>★</p>
+<p>DNS，英文全称是 <strong>domain name system</strong> ，域名解析系统，是Internet上作为域名和IP相互映射的一个分布式数据库。它的作用很明确，就是可以根据域名查出对应的IP地址。在浏览器缓存、本地DNS服务器、根域名服务器都是怎么查找的，大家回答的时候都可以说下哈。</p>
+</blockquote>
+<p>DNS的解析过程如下图：</p>
+<p><img src="/2024/04/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%9D%A2%E7%BB%8F/image/1701501212312.png" alt="1701501212312"></p>
+<p>假设你要查询<strong>www.baidu.com</strong>的IP地址:</p>
+<blockquote>
+<p>★</p>
+<p>首先会查找浏览器的缓存,看看是否能找到<strong>www.baidu.com</strong>对应的IP地址，找到就直接返回；否则进行下一步。</p>
+<ul>
+<li>将请求发往给本地DNS服务器，如果查找到也直接返回，否则继续进行下一步；</li>
+<li>本地DNS服务器向<strong>根域名服务器</strong>发送请求，根域名服务器返回负责 <code>.com</code>的顶级域名服务器的IP地址的列表。</li>
+<li>本地DNS服务器再向其中一个负责 <code>.com</code>的顶级域名服务器发送一个请求，返回负责 <code>.baidu</code>的权威域名服务器的IP地址列表。</li>
+<li>本地DNS服务器再向其中一个权威域名服务器发送一个请求，返回<strong>www.baidu.com</strong>所对应的IP地址。</li>
+</ul>
+</blockquote>
+<h1 id="四、网络攻击"><a href="#四、网络攻击" class="headerlink" title="四、网络攻击"></a>四、网络攻击</h1><h2 id="4-1-什么是CSRF攻击，如何避免"><a href="#4-1-什么是CSRF攻击，如何避免" class="headerlink" title="4.1 什么是CSRF攻击，如何避免"></a>4.1 什么是CSRF攻击，如何避免</h2><p><strong>思路:</strong> 这道题考察的知识点是 <strong>CSRF攻击</strong> ，它是属于网络安全这块的知识点，还有<strong>Xss攻击、SQL注入、DDoS</strong>等这些常见的网络攻击，我们都需要知道攻击的流程哈。</p>
+<p><strong>什么是CSRF 攻击？</strong></p>
+<blockquote>
+<p>★</p>
+<p>CSRF，跨站请求伪造（英文全称是Cross-site request forgery），是一种挟制用户在当前已登录的Web应用程序上执行非本意的操作的攻击方法。</p>
+</blockquote>
+<p><strong>CSRF是如何攻击的呢？</strong></p>
+<p>来看一个来自百度百科的例子哈：</p>
+<p><img src="/2024/04/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%9D%A2%E7%BB%8F/image/1701501228139.png" alt="1701501228139"></p>
+<ol>
+<li>Tom 登陆银行，没有退出，浏览器包含了Tom在银行的身份认证信息。</li>
+<li>黑客Jerry将伪造的转账请求，包含在在帖子</li>
+<li>Tom在银行网站保持登陆的情况下，浏览帖子</li>
+<li>将伪造的转账请求连同身份认证信息，发送到银行网站</li>
+<li>银行网站看到身份认证信息，以为就是Tom的合法操作，最后造成Tom资金损失。</li>
+</ol>
+<p><strong>怎么解决CSRF攻击呢？</strong></p>
+<ul>
+<li>检查Referer字段。</li>
+<li>添加校验token。</li>
+</ul>
+<h2 id="4-2-什么是DoS、DDoS、DRDoS攻击？"><a href="#4-2-什么是DoS、DDoS、DRDoS攻击？" class="headerlink" title="4.2 什么是DoS、DDoS、DRDoS攻击？"></a>4.2 什么是DoS、DDoS、DRDoS攻击？</h2><p><strong>思路:</strong> 这是涉及网络安全的一个知识点，DDos还会挺常见的，如SYN Flood。</p>
+<blockquote>
+<p>★</p>
+<p><strong>DOS</strong> : (Denial of Service),翻译过来就是拒绝服务,一切能引起DOS行为的攻击都被称为DOS攻击。最常见的DoS攻击就有 <strong>计算机网络宽带攻击</strong> 、 <strong>连通性攻击</strong></p>
+<ul>
+<li><strong>DDoS</strong> : (Distributed Denial of Service),翻译过来是分布式拒绝服务。是指处于不同位置的多个攻击者同时向一个或几个目标发动攻击，或者一个攻击者控制了位于不同位置的多台机器并利用这些机器对受害者同时实施攻击。常见的DDos有<strong>SYN Flood、Ping of Death、ACK Flood、UDP Flood</strong>等。</li>
+<li><strong>DRDoS</strong> : (Distributed Reflection Denial of Service)，中文是分布式反射拒绝服务，该方式靠的是发送大量带有被害者IP地址的数据包给攻击主机，然后攻击主机对IP地址源做出大量回应，从而形成拒绝服务攻击。</li>
+</ul>
+</blockquote>
+<h2 id="4-3-什么是XSS攻击，如何避免"><a href="#4-3-什么是XSS攻击，如何避免" class="headerlink" title="4.3 什么是XSS攻击，如何避免?"></a>4.3 什么是XSS攻击，如何避免?</h2><p><strong>思路:</strong> XSS攻击也是比较常见，XSS，叫 <strong>跨站脚本攻击（Cross-Site Scripting）</strong> ，因为会与层叠样式表(Cascading Style Sheets, CSS)的缩写混淆，因此有人将跨站脚本攻击缩写为XSS。它指的是恶意攻击者往Web页面里插入恶意html代码，当用户浏览该页之时，嵌入其中Web里面的html代码会被执行，从而达到恶意攻击用户的特殊目的。XSS攻击一般分三种类型：<strong>存储型 、反射型 、DOM型XSS</strong></p>
+<h3 id="4-3-1-XSS是如何攻击的呢？"><a href="#4-3-1-XSS是如何攻击的呢？" class="headerlink" title="4.3.1 XSS是如何攻击的呢？"></a>4.3.1 XSS是如何攻击的呢？</h3><p>拿反射型举个例子吧，流程图如下：</p>
+<p><img src="/2024/04/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%9D%A2%E7%BB%8F/image/1701502530418.png" alt="1701502530418"></p>
+<h3 id="4-3-2-如何解决XSS攻击问题？"><a href="#4-3-2-如何解决XSS攻击问题？" class="headerlink" title="4.3.2 如何解决XSS攻击问题？"></a>4.3.2 如何解决XSS攻击问题？</h3><ul>
+<li>对输入进行过滤，过滤标签等，只允许合法值。</li>
+<li>HTML转义</li>
+<li>对于链接跳转，如 <code>&lt;a href=&quot;xxx&quot;</code> 等，要校验内容，禁止以script开头的非法链接。</li>
+<li>限制输入长度</li>
+</ul>
+<h2 id="4-4-SQL注入"><a href="#4-4-SQL注入" class="headerlink" title="4.4 SQL注入"></a>4.4 SQL注入</h2><p><strong>思路:</strong> SQL注入是最经典的安全问题。无论你是前端开发还是后端开发，都必须掌握的。</p>
+<blockquote>
+<p>★</p>
+<p>SQL注入是一种代码注入技术，一般被应用于攻击web应用程序。它通过在web应用接口传入一些特殊参数字符，来欺骗应用服务器，执行恶意的SQL命令，以达到非法获取系统信息的目的。它目前是黑客对数据库进行攻击的最常用手段之一。</p>
+</blockquote>
+<h3 id="4-4-1-SQL注入是如何攻击的？"><a href="#4-4-1-SQL注入是如何攻击的？" class="headerlink" title="4.4.1 SQL注入是如何攻击的？"></a>4.4.1 SQL注入是如何攻击的？</h3><p>举个常见的 <strong>业务场景</strong> ：在web表单搜索框输入员工名字，然后后台查询出对应名字的员工。</p>
+<p><img src="/2024/04/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%9D%A2%E7%BB%8F/image/1701502729696.png" alt="1701502729696"></p>
+<p>这种场景下，一般都是前端页面,把一个名字参数name传到后台，然后后台通过SQL把结果查询出来</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">name = &quot;田螺&quot;; //前端传过来的</span><br><span class="line"></span><br><span class="line">SQL= &quot;select * from staff where name=&quot; + name;  //根据前端传过来的name参数，查询数据库员工表staff</span><br></pre></td></tr></table></figure>
+<p>因为SQL是直接拼接的，如果我们完全信任前端传的参数的话。假如前端传这么一个参数时 <code>&#39;&#39; or &#39;1&#39;=&#39;1&#39;</code>，SQL就变成酱紫的啦。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select * from staff where name=&#x27;&#x27; or &#x27;1&#x27;=&#x27;1&#x27;;</span><br></pre></td></tr></table></figure>
+<p>这个SQL会把所有的员工信息全都查出来了，酱紫就请求用户已经越权啦。请求者可以获取所有员工的信息，信息已经暴露了啦。</p>
+<h3 id="4-4-2-如何预防SQL注入问题"><a href="#4-4-2-如何预防SQL注入问题" class="headerlink" title="4.4.2 如何预防SQL注入问题"></a>4.4.2 如何预防SQL注入问题</h3><p><strong>1). 使用#{}而不是 ${}</strong></p>
+<p>在MyBatis中,使用 <code>#&#123;&#125;</code>而不是 <code>$&#123;&#125;</code>，可以很大程度防止sql注入。</p>
+<ul>
+<li>因为 <code>#&#123;&#125;</code>是一个参数占位符，对于字符串类型，会自动加上””，其他类型不加。由于Mybatis采用 <strong>预编译</strong> ，其后的参数不会再进行SQL编译，所以一定程度上防止SQL注入。</li>
+<li><code>$&#123;&#125;</code>是一个简单的字符串替换，字符串是什么，就会解析成什么，存在SQL注入风险</li>
+</ul>
+<p><strong>2). 不要暴露一些不必要的日志或者安全信息，比如避免直接响应一些sql异常信息。</strong></p>
+<p>如果SQL发生异常了，不要把这些信息暴露响应给用户，可以自定义异常进行响应</p>
+<p><strong>3). 不相信任何外部输入参数，过滤参数中含有的一些数据库关键词关键词</strong></p>
+<p>可以加个参数校验过滤的方法，过滤 <code>union，or</code>等数据库关键词</p>
+<p><strong>4). 适当的权限控制</strong></p>
+<p>在你查询信息时，先校验下当前用户是否有这个权限。比如说，实现代码的时候，可以让用户多传一个企业Id什么的，或者获取当前用户的session信息等，在查询前，先校验一下当前用户是否是这个企业下的等等，是的话才有这个查询员工的权限。</p>
+]]></content>
+      <categories>
+        <category>嵌入式</category>
+      </categories>
+      <tags>
+        <tag>计算机网络</tag>
+      </tags>
+  </entry>
 </search>
