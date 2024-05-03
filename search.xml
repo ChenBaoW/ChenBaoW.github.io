@@ -3947,4 +3947,24 @@ Df<=min(PBS1_Tq,PBS2_Tq)2×(13×NBT−PBS2_Tq)</script><script type="math/tex; m
         <tag>计算机网络</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Pycharm新建工程</title>
+    <url>/2024/05/03/Pycharm%E6%96%B0%E5%BB%BA%E5%B7%A5%E7%A8%8B/</url>
+    <content><![CDATA[<h1 id="一、新建工程"><a href="#一、新建工程" class="headerlink" title="一、新建工程"></a>一、新建工程</h1><h2 id="1-点击新建工程"><a href="#1-点击新建工程" class="headerlink" title="1.点击新建工程"></a>1.点击新建工程</h2><p><img src="/2024/05/03/Pycharm%E6%96%B0%E5%BB%BA%E5%B7%A5%E7%A8%8B/image/1703337095672.png" alt="1703337095672"></p>
+<h2 id="2-设置工程信息"><a href="#2-设置工程信息" class="headerlink" title="2.设置工程信息"></a>2.设置工程信息</h2><p><img src="/2024/05/03/Pycharm%E6%96%B0%E5%BB%BA%E5%B7%A5%E7%A8%8B/image/1703337259813.png" alt="1703337259813"></p>
+<h2 id="3-新建python文件"><a href="#3-新建python文件" class="headerlink" title="3.新建python文件"></a>3.新建python文件</h2><p><img src="/2024/05/03/Pycharm%E6%96%B0%E5%BB%BA%E5%B7%A5%E7%A8%8B/image/1703337409402.png" alt="1703337409402"></p>
+<p>设置python文件名</p>
+<p><img src="https://file+.vscode-resource.vscode-cdn.net/f%3A/Git_repository/note/OpenCV/OpenCV%20%E5%88%9D%E7%BA%A7%E6%95%99%E7%A8%8B/Pycharm%E6%96%B0%E5%BB%BA%E5%B7%A5%E7%A8%8B/image/Pycharm%E6%96%B0%E5%BB%BA%E5%B7%A5%E7%A8%8B/1703337492529.png" alt="1703337492529"></p>
+<h2 id="4-设置python配置信息"><a href="#4-设置python配置信息" class="headerlink" title="4.设置python配置信息"></a>4.设置python配置信息</h2><p><img src="/2024/05/03/Pycharm%E6%96%B0%E5%BB%BA%E5%B7%A5%E7%A8%8B/image/1703337721295.png" alt="1703337721295"></p>
+<p>添加脚本路径</p>
+<p><img src="/2024/05/03/Pycharm%E6%96%B0%E5%BB%BA%E5%B7%A5%E7%A8%8B/image/1703337953102.png" alt="1703337953102"></p>
+<h1 id="二、编写程序"><a href="#二、编写程序" class="headerlink" title="二、编写程序"></a>二、编写程序</h1><p><img src="/2024/05/03/Pycharm%E6%96%B0%E5%BB%BA%E5%B7%A5%E7%A8%8B/image/1703338050213.png" alt="1703338050213"></p>
+]]></content>
+      <categories>
+        <category>OpenCV</category>
+      </categories>
+      <tags>
+        <tag>OpenCV 初级教程</tag>
+      </tags>
+  </entry>
 </search>
