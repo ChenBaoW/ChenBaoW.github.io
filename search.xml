@@ -3,7 +3,7 @@
   <entry>
     <title>C常见知识点</title>
     <url>/2024/04/01/C%E5%B8%B8%E8%A7%81%E7%9F%A5%E8%AF%86%E7%82%B9/</url>
-    <content><![CDATA[<h1 id="1-内存方面"><a href="#1-内存方面" class="headerlink" title="1.内存方面"></a>1.内存方面</h1><h2 id="1-1-堆与栈的区别？"><a href="#1-1-堆与栈的区别？" class="headerlink" title="1.1 堆与栈的区别？"></a>1.1 <strong>堆与栈的区别？</strong></h2><p>（1）栈的空间是系统自动分配和回收，堆的空间是用户手动分配回收（malloc，calloc，realloc，free）</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\css\APlayer.min.css"><script src="\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\js\Meting.min.js"></script><h1 id="1-内存方面"><a href="#1-内存方面" class="headerlink" title="1.内存方面"></a>1.内存方面</h1><h2 id="1-1-堆与栈的区别？"><a href="#1-1-堆与栈的区别？" class="headerlink" title="1.1 堆与栈的区别？"></a>1.1 <strong>堆与栈的区别？</strong></h2><p>（1）栈的空间是系统自动分配和回收，堆的空间是用户手动分配回收（malloc，calloc，realloc，free）</p>
 <p>（2）栈的空间较小，堆的空间较大</p>
 <p>（3）栈的地址空间往地址向下增长，堆的地址空间是由低地址到高地址</p>
 <p>（4）栈的存储效率更高</p>
@@ -113,7 +113,8 @@
 <p><strong>p 为指针得到的是一个 指针变量的字节数，而不是 p 所指的内存容量</strong>。C++/C 语言没有办法知道指针所指的内存容量，除非在申请内存时记住它。注意当数组作为函数的参数进行传递时，该数组自动退化为同类型的指针。</p>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="type">char</span> a[] = <span class="string">&quot;hello world&quot;</span>;</span><br><span class="line"><span class="type">char</span> *p = a;</span><br><span class="line">cout&lt;&lt; <span class="built_in">sizeof</span>(a) &lt;&lt; endl; <span class="comment">// 12 字节</span></span><br><span class="line">cout&lt;&lt; <span class="built_in">sizeof</span>(p) &lt;&lt; endl; <span class="comment">// 4 字节</span></span><br></pre></td></tr></table></figure>
 <p>计算数组和指针的内存容量</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">Func</span><span class="params">(<span class="type">char</span> a[<span class="number">100</span>])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">cout&lt;&lt; <span class="built_in">sizeof</span>(a) &lt;&lt; endl; <span class="comment">// 4 字节而不是 100 字节</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">Func</span><span class="params">(<span class="type">char</span> a[<span class="number">100</span>])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">cout&lt;&lt; <span class="built_in">sizeof</span>(a) &lt;&lt; endl; <span class="comment">// 4 字节而不是 100 字节</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
       <categories>
         <category>嵌入式</category>
       </categories>
