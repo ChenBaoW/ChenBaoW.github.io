@@ -3968,4 +3968,26 @@ Df<=min(PBS1_Tq,PBS2_Tq)2×(13×NBT−PBS2_Tq)</script><script type="math/tex; m
         <tag>嵌入式通讯协议</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Python安装OpenCV</title>
+    <url>/2024/05/05/Python%E5%AE%89%E8%A3%85OpenCV/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\css\APlayer.min.css"><script src="\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\js\Meting.min.js"></script><h1 id="一、OpenCV的安装"><a href="#一、OpenCV的安装" class="headerlink" title="一、OpenCV的安装"></a>一、OpenCV的安装</h1><h2 id="1-OpenCV在Windows系统下的安装"><a href="#1-OpenCV在Windows系统下的安装" class="headerlink" title="1.OpenCV在Windows系统下的安装"></a>1.OpenCV在Windows系统下的安装</h2><p>在Windows系统下，推荐使用Python的包管理工具pip来安装OpenCV。你可以在命令行中运行以下命令来安装：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">pip install opencv-python</span><br></pre></td></tr></table></figure>
+<p>使用清华园下载</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">pip install opencv-python opencv-contrib-python -i https://mirrors.aliyun.com/pypi/simple/   </span><br></pre></td></tr></table></figure>
+<p>如果你需要使用到OpenCV的额外模块（如xfeatures2d等），可以安装opencv-contrib-python包：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">pip install opencv-contrib-python</span><br></pre></td></tr></table></figure>
+<h2 id="2-OpenCV在Pycharm下的安装"><a href="#2-OpenCV在Pycharm下的安装" class="headerlink" title="2.OpenCV在Pycharm下的安装"></a>2.OpenCV在Pycharm下的安装</h2><h3 id="2-1-点击设置"><a href="#2-1-点击设置" class="headerlink" title="2.1 点击设置"></a>2.1 点击设置</h3><p><img src="/2024/05/05/Python%E5%AE%89%E8%A3%85OpenCV/image/1703338561525.png" alt="1703338561525"></p>
+<h3 id="2-2-点击-python-解释器"><a href="#2-2-点击-python-解释器" class="headerlink" title="2.2 点击 python 解释器"></a>2.2 点击 python 解释器</h3><p><img src="/2024/05/05/Python%E5%AE%89%E8%A3%85OpenCV/image/1703338694876.png" alt="1703338694876"></p>
+<h3 id="2-3-安装opencv-python包"><a href="#2-3-安装opencv-python包" class="headerlink" title="2.3 安装opencv-python包"></a>2.3 安装opencv-python包</h3><p><img src="/2024/05/05/Python%E5%AE%89%E8%A3%85OpenCV/image/1703338753253.png" alt="1703338753253"></p>
+<h3 id="2-4-成功安装opencv-python包"><a href="#2-4-成功安装opencv-python包" class="headerlink" title="2.4 成功安装opencv-python包"></a>2.4 成功安装opencv-python包</h3><p><img src="/2024/05/05/Python%E5%AE%89%E8%A3%85OpenCV/image/1703338820599.png" alt="1703338820599"></p>
+<h2 id="3-查看opencv-python包是否安装成功"><a href="#3-查看opencv-python包是否安装成功" class="headerlink" title="3.查看opencv-python包是否安装成功"></a>3.查看opencv-python包是否安装成功</h2><p><img src="/2024/05/05/Python%E5%AE%89%E8%A3%85OpenCV/image/1703338893373.png" alt="1703338893373"></p>
+]]></content>
+      <categories>
+        <category>OpenCV</category>
+      </categories>
+      <tags>
+        <tag>OpenCV 初级教程</tag>
+      </tags>
+  </entry>
 </search>
