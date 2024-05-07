@@ -345,6 +345,10 @@
     <url>/2024/05/03/Pycharm%E6%96%B0%E5%BB%BA%E5%B7%A5%E7%A8%8B/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\css\APlayer.min.css"><script src="\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\js\Meting.min.js"></script><h1 id="一、新建工程"><a href="#一、新建工程" class="headerlink" title="一、新建工程"></a>一、新建工程</h1><h2 id="1-点击新建工程"><a href="#1-点击新建工程" class="headerlink" title="1.点击新建工程"></a>1.点击新建工程</h2><p><img src="/2024/05/03/Pycharm%E6%96%B0%E5%BB%BA%E5%B7%A5%E7%A8%8B/image/1703337095672.png" alt="1703337095672"></p>
 <h2 id="2-设置工程信息"><a href="#2-设置工程信息" class="headerlink" title="2.设置工程信息"></a>2.设置工程信息</h2><p><img src="/2024/05/03/Pycharm%E6%96%B0%E5%BB%BA%E5%B7%A5%E7%A8%8B/image/1703337259813.png" alt="1703337259813"></p>
+<p>补充：</p>
+<p>问题现状：新建项目无法导入已经安装好的库（终端运行：python -m pip list；会显示安装好的库）</p>
+<p>解决方法：新建项目时，点击下面两个选项，使得新项目继承安装好的软件包</p>
+<p><img src="/2024/05/03/Pycharm%E6%96%B0%E5%BB%BA%E5%B7%A5%E7%A8%8B/image/1715077631088.png" alt="1715077631088"></p>
 <h2 id="3-新建python文件"><a href="#3-新建python文件" class="headerlink" title="3.新建python文件"></a>3.新建python文件</h2><p><img src="/2024/05/03/Pycharm%E6%96%B0%E5%BB%BA%E5%B7%A5%E7%A8%8B/image/1703337409402.png" alt="1703337409402"></p>
 <p>设置python文件名</p>
 <p><img src="/2024/05/03/Pycharm%E6%96%B0%E5%BB%BA%E5%B7%A5%E7%A8%8B/image/1703337492529.png" alt="1703337492529"></p>
