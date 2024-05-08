@@ -3994,4 +3994,848 @@ Df<=min(PBS1_Tq,PBS2_Tq)2×(13×NBT−PBS2_Tq)</script><script type="math/tex; m
         <tag>OpenCV 初级教程</tag>
       </tags>
   </entry>
+  <entry>
+    <title>OpenCV基础</title>
+    <url>/2024/05/08/OpenCV%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\css\APlayer.min.css"><script src="\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\js\Meting.min.js"></script><h1 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h1><p><a href="https://www.w3schools.cn/opencv_python/opencv_python_write_image.html">OpenCV Python - 写入图像 (w3schools.cn)</a></p>
+<h1 id="一、OpenCV-Python-读取图像"><a href="#一、OpenCV-Python-读取图像" class="headerlink" title="一、OpenCV Python -读取图像"></a>一、OpenCV Python -读取图像</h1><p><strong>CV2</strong> 包（OpenCV-Python 库的名称）提供了<strong>imread()</strong> 函数来读取图像。</p>
+<p>读取一张图片的命令如下 −</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">img=cv2.imread(filename, flags)</span><br></pre></td></tr></table></figure>
+<p>flags 参数是对以下常量的枚举 −</p>
+<ul>
+<li>cv2.IMREAD_COLOR (1) − 加载彩色图像。</li>
+<li>cv2.IMREAD_GRAYSCALE (0) − 以灰度模式加载图像</li>
+<li>cv2.IMREAD_UNCHANGED (-1) − 加载图像，包括 alpha 通道</li>
+</ul>
+<p>该函数将返回一个图像对象，可以使用 imshow() 函数进行渲染。 下面给出了使用 imshow() 函数的命令 −</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cv2.imshow(window-name, image)</span><br></pre></td></tr></table></figure>
+<p>图像显示在命名窗口中。 将创建一个设置了 AUTOSIZE 标志的新窗口。 <strong>WaitKey()</strong> 是一个键盘绑定函数。 它的参数是以毫秒为单位的时间。</p>
+<p>该函数等待指定的毫秒数并保持窗口显示，直到按下一个键。 最后，我们可以销毁所有这样创建的窗口。</p>
+<p>显示OpenCV logo 的程序如下 −</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="comment"># Load a color image in grayscale</span></span><br><span class="line">img = cv2.imread(<span class="string">&#x27;OpenCV_Logo.png&#x27;</span>,<span class="number">1</span>)</span><br><span class="line">cv2.imshow(<span class="string">&#x27;image&#x27;</span>,img)</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br><span class="line">cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure>
+<p>以上程序显示OpenCV logo如下 −</p>
+<p><img src="/2024/05/08/OpenCV%E5%9F%BA%E7%A1%80/image/1703339666401.png" alt="1703339666401"></p>
+<h1 id="二、OpenCV-Python-写入图像"><a href="#二、OpenCV-Python-写入图像" class="headerlink" title="二、OpenCV Python - 写入图像"></a>二、OpenCV Python - 写入图像</h1><p>CV2 包中有 <strong>imwrite()</strong> 函数，可以将图像对象保存到指定的文件中。</p>
+<p>借助 imwrite() 函数保存图像的命令如下 −</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cv2.imwrite(filename, img)</span><br></pre></td></tr></table></figure>
+<p>图像格式由 OpenCV 根据文件扩展名自动确定。 OpenCV 支持 <em>.bmp, </em>.dib , <em>.jpeg, </em>.jpg, <em>.png,</em>.webp, <em>.sr,</em>.tiff, *.tif 等图像文件类型。</p>
+<hr>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>以下程序加载 OpenCV logo 图像并在按下”s”键时保存其灰度版本 −</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import cv2</span><br><span class="line"># Load an color image in grayscale</span><br><span class="line">img = cv2.imread(&#x27;OpenCV_Logo.png&#x27;,0)</span><br><span class="line">cv2.imshow(&#x27;image&#x27;,img)</span><br><span class="line">key=cv2.waitKey(0)</span><br><span class="line">if key==ord(&#x27;s&#x27;):</span><br><span class="line">   cv2.imwrite(&quot;opencv_logo_GS.png&quot;, img)</span><br><span class="line">cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h2><p><img src="/2024/05/08/OpenCV%E5%9F%BA%E7%A1%80/image/1703339738947.png" alt="1703339738947"></p>
+<h1 id="三、OpenCV-Python-写入图像"><a href="#三、OpenCV-Python-写入图像" class="headerlink" title="三、OpenCV Python - 写入图像"></a>三、OpenCV Python - 写入图像</h1><p>CV2 包中有 <strong>imwrite()</strong> 函数，可以将图像对象保存到指定的文件中。</p>
+<p>借助 imwrite() 函数保存图像的命令如下 −</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cv2.imwrite(filename, img)</span><br></pre></td></tr></table></figure>
+<p>图像格式由 OpenCV 根据文件扩展名自动确定。 OpenCV 支持 <em>.bmp, </em>.dib , <em>.jpeg, </em>.jpg, <em>.png,</em>.webp, <em>.sr,</em>.tiff, *.tif 等图像文件类型。</p>
+<hr>
+<h2 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h2><p>以下程序加载 OpenCV logo 图像并在按下”s”键时保存其灰度版本 −</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import cv2</span><br><span class="line"># Load an color image in grayscale</span><br><span class="line">img = cv2.imread(&#x27;OpenCV_Logo.png&#x27;,0)</span><br><span class="line">cv2.imshow(&#x27;image&#x27;,img)</span><br><span class="line">key=cv2.waitKey(0)</span><br><span class="line">if key==ord(&#x27;s&#x27;):</span><br><span class="line">   cv2.imwrite(&quot;opencv_logo_GS.png&quot;, img)</span><br><span class="line">cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="输出-1"><a href="#输出-1" class="headerlink" title="输出"></a>输出</h2><p><img src="/2024/05/08/OpenCV%E5%9F%BA%E7%A1%80/image/1703339874797.png" alt="1703339874797"></p>
+<h2 id="保存图像位置"><a href="#保存图像位置" class="headerlink" title="保存图像位置"></a>保存图像位置</h2><p>按下‘s’键后，保存灰度图像</p>
+<p><img src="/2024/05/08/OpenCV%E5%9F%BA%E7%A1%80/image/1703339953183.png" alt="1703339953183"></p>
+<h1 id="四、OpenCV-Python-使用-Matplotlib"><a href="#四、OpenCV-Python-使用-Matplotlib" class="headerlink" title="四、OpenCV Python - 使用 Matplotlib"></a>四、OpenCV Python - 使用 Matplotlib</h1><p>Python 的 Matplotlib 是一个功能强大的绘图库，包含大量适用于各种绘图类型的绘图函数。 它还具有 imshow() 函数来渲染图像。 它提供了额外的功能，如缩放、保存等。</p>
+<hr>
+<h2 id="示例-2"><a href="#示例-2" class="headerlink" title="示例"></a>示例</h2><p>在运行以下程序之前，请确保当前工作环境中安装了Matplotlib。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import cv2</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line"># Load an color image in grayscale</span><br><span class="line">img = cv2.imread(&#x27;OpenCV_Logo.png&#x27;,0)</span><br><span class="line">plt.imshow(img)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="输出-2"><a href="#输出-2" class="headerlink" title="输出"></a>输出</h2><p><img src="/2024/05/08/OpenCV%E5%9F%BA%E7%A1%80/image/1703340225539.png" alt="1703340225539"></p>
+<h1 id="五、OpenCV-Python-图像属性"><a href="#五、OpenCV-Python-图像属性" class="headerlink" title="五、OpenCV Python - 图像属性"></a>五、OpenCV Python - 图像属性</h1><p>OpenCV 读取 NumPy 数组中的图像数据。 此 ndarray 对象的 <strong>shape()</strong> 方法显示图像属性，例如尺寸和通道。</p>
+<p>shape() 方法的使用命令如下 −</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"></span><br><span class="line">img = cv2.imread(<span class="string">&#x27;OpenCV_Logo.png&#x27;</span>,<span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(img.shape)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">(222, 180, 3)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>在上面的命令中 −</p>
+<ul>
+<li>前两项 shape[0] 和 shape[1] 表示图像的宽度和高度。</li>
+<li>Shape[2] 代表通道数。</li>
+<li>3 表示图像具有红绿蓝 (RGB) 通道。</li>
+</ul>
+<p>类似地，size 属性返回图像的大小。 图像大小的命令如下 −</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"></span><br><span class="line">img = cv2.imread(<span class="string">&#x27;OpenCV_Logo.png&#x27;</span>,<span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(img.size)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">426072</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>ndarray 中的每个元素代表一个图像像素。</p>
+<p>在下面提到的命令的帮助下，我们可以访问和操作任何像素的值。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"></span><br><span class="line">img = cv2.imread(<span class="string">&#x27;OpenCV_Logo.png&#x27;</span>,<span class="number">1</span>)</span><br><span class="line">p = img[<span class="number">50</span>,<span class="number">50</span>]</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(p)</span><br><span class="line"><span class="built_in">print</span>(img.dtype)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[25 41 55]</span><br><span class="line">uint8</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="示例-3"><a href="#示例-3" class="headerlink" title="示例"></a>示例</h2><p>以下代码将前 100X100 像素的颜色值更改为黑色。 <strong>imshow()</strong> 函数可以验证结果。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"></span><br><span class="line">img = cv2.imread(<span class="string">&#x27;OpenCV_Logo.png&#x27;</span>,<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">100</span>):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">100</span>):</span><br><span class="line">        img[i, j] = [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">cv2.imshow(<span class="string">&#x27;image&#x27;</span>,img)</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br><span class="line">cv2.destroyAllWindows()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="输出-3"><a href="#输出-3" class="headerlink" title="输出"></a>输出</h2><p><img src="/2024/05/08/OpenCV%E5%9F%BA%E7%A1%80/image/1703340928229.png" alt="1703340928229"></p>
+<p>可以使用<strong>split()</strong> 函数将图像通道拆分为单独的平面。 可以使用 <strong>merge()</strong> 函数合并通道。</p>
+<p>split() 函数返回一个多通道数组。</p>
+<p>我们可以使用下面的命令来分割图像通道 −</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">img = cv2.imread(&#x27;OpenCV_Logo.png&#x27;,1)</span><br><span class="line">b,g,r = cv2.split(img)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>您现在可以对每个平面进行操作。</p>
+<p>假设我们把蓝色通道的所有像素都设置为0，代码会如下 −</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">img[:, :, 0] = 0</span><br><span class="line">cv2.imshow(&quot;image&quot;, img)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="生成的图像如下所示"><a href="#生成的图像如下所示" class="headerlink" title="生成的图像如下所示"></a>生成的图像如下所示</h2><p><img src="/2024/05/08/OpenCV%E5%9F%BA%E7%A1%80/image/1703341342204.png" alt="1703341342204"></p>
+<h1 id="六、OpenCV-Python-按位运算"><a href="#六、OpenCV-Python-按位运算" class="headerlink" title="六、OpenCV Python - 按位运算"></a>六、OpenCV Python - 按位运算</h1><p>位运算用于图像处理和提取图像中的基本部分。</p>
+<p>以下运算符在 OpenCV 中实现 −</p>
+<ul>
+<li>bitwise_and</li>
+<li>bitwise_or</li>
+<li>bitwise_xor</li>
+<li>bitwise_not</li>
+</ul>
+<hr>
+<h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><p>为了演示这些运算符的使用，拍摄了两张带有实心圆和空心圆的图像。</p>
+<p>以下程序演示了在 OpenCV-Python 中使用位运算符 −</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import cv2</span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">img1 = cv2.imread(&#x27;a.png&#x27;)</span><br><span class="line">img2 = cv2.imread(&#x27;b.png&#x27;)</span><br><span class="line"></span><br><span class="line">dest1 = cv2.bitwise_and(img2, img1, mask = None)</span><br><span class="line">dest2 = cv2.bitwise_or(img2, img1, mask = None)</span><br><span class="line">dest3 = cv2.bitwise_xor(img1, img2, mask = None)</span><br><span class="line"></span><br><span class="line">cv2.imshow(&#x27;A&#x27;, img1)</span><br><span class="line">cv2.imshow(&#x27;B&#x27;, img2)</span><br><span class="line">cv2.imshow(&#x27;AND&#x27;, dest1)</span><br><span class="line">cv2.imshow(&#x27;OR&#x27;, dest2)</span><br><span class="line">cv2.imshow(&#x27;XOR&#x27;, dest3)</span><br><span class="line">cv2.imshow(&#x27;NOT A&#x27;, cv2.bitwise_not(img1))</span><br><span class="line">cv2.imshow(&#x27;NOT B&#x27;, cv2.bitwise_not(img2))</span><br><span class="line"></span><br><span class="line">if cv2.waitKey(0) &amp; 0xff == 27:</span><br><span class="line">   cv2.destroyAllWindows()</span><br><span class="line"> </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="输出-4"><a href="#输出-4" class="headerlink" title="输出"></a>输出</h2><p><img src="/2024/05/08/OpenCV%E5%9F%BA%E7%A1%80/image/1703341954559.png" alt="1703341954559"></p>
+<h2 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h2><p>在另一个涉及按位运算的示例中，opencv logo 叠加在另一个图像上。 在这里，我们通过调用 <strong>threshold()</strong> 函数获得了一个mask数组，并在它们之间进行AND运算。</p>
+<p>同样，通过 NOT 操作，我们得到一个逆掩码。 此外，我们对背景图像进行 AND。</p>
+<p>以下是决定使用位运算的程序 −</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2 <span class="keyword">as</span> cv</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">img1 = cv.imread(<span class="string">&#x27;lena.jpg&#x27;</span>)</span><br><span class="line">img2 = cv.imread(<span class="string">&#x27;whitelogo.png&#x27;</span>)</span><br><span class="line">rows,cols,channels = img2.shape</span><br><span class="line">roi = img1[<span class="number">0</span>:rows, <span class="number">0</span>:cols]</span><br><span class="line">img2gray = cv.cvtColor(img2,cv.COLOR_BGR2GRAY)</span><br><span class="line">ret, mask = cv.threshold(img2gray, <span class="number">10</span>, <span class="number">255</span>, cv.THRESH_BINARY)</span><br><span class="line">mask_inv = cv.bitwise_not(mask)</span><br><span class="line"><span class="comment"># Now black-out the area of logo</span></span><br><span class="line">img1_bg = cv.bitwise_and(roi,roi,mask = mask_inv)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Take only region of logo from logo image.</span></span><br><span class="line">img2_fg = cv.bitwise_and(img2,img2,mask = mask)</span><br><span class="line"><span class="comment"># Put logo in ROI</span></span><br><span class="line">dst = cv.add(img2_fg, img1_bg)</span><br><span class="line">img1[<span class="number">0</span>:rows, <span class="number">0</span>:cols ] = dst</span><br><span class="line">cv.imshow(<span class="string">&#x27;Result&#x27;</span>,img1)</span><br><span class="line">cv.waitKey(<span class="number">0</span>)</span><br><span class="line"><span class="keyword">if</span> key == <span class="built_in">ord</span>(<span class="string">&#x27;s&#x27;</span>):</span><br><span class="line">   cv2.imwrite(<span class="string">&quot;test.png&quot;</span>, img1)</span><br><span class="line">cv2.destroyAllWindows()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="输出-5"><a href="#输出-5" class="headerlink" title="输出"></a>输出</h2><p>遮罩图像给出以下结果 −</p>
+<p><img src="/2024/05/08/OpenCV%E5%9F%BA%E7%A1%80/image/1703342357876.png" alt="1703342357876"></p>
+<h1 id="七、OpenCV-Python-绘制形状和文本"><a href="#七、OpenCV-Python-绘制形状和文本" class="headerlink" title="七、OpenCV Python - 绘制形状和文本"></a>七、OpenCV Python - 绘制形状和文本</h1><p>在本章中，我们将学习如何借助 OpenCV-Python 在图像上绘制形状和文本。 让我们从了解在图像上绘制形状开始。</p>
+<hr>
+<h2 id="在图像上绘制形状"><a href="#在图像上绘制形状" class="headerlink" title="在图像上绘制形状"></a>在图像上绘制形状</h2><p>我们需要了解 OpenCV-Python 中所需的函数，这些函数可以帮助我们在图像上绘制形状。</p>
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><p>OpenCV-Python 包（称为 cv2）包含以下绘制相应形状的函数。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+<th>命令</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cv2.line()</td>
+<td>绘制连接两点的线段。</td>
+<td>cv2.line(img, pt1, pt2, color, thickness)</td>
+</tr>
+<tr>
+<td>cv2.circle()</td>
+<td>以给定点为中心绘制给定半径的圆</td>
+<td>cv2.circle(img, center, radius, color, thickness)</td>
+</tr>
+<tr>
+<td>cv2.rectangle</td>
+<td>绘制一个矩形，给定点为左上角和右下角。</td>
+<td>cv2.rectangle(img, pt1, pt2, color, thickness)</td>
+</tr>
+<tr>
+<td>cv2.ellipse()</td>
+<td>绘制简单的粗椭圆弧或填充椭圆扇区。</td>
+<td>cv2.ellipse(img, center, axes, angle, startAngle, endAngle, color, thickness)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><p>上述函数的常用参数如下 −</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>功能与说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>img</strong>要绘制形状的图像</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>color</strong>形状的颜色。 对于 BGR，将其作为元组传递。 对于灰度，只需传递标量值。</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>thickness</strong>线或圆的粗细。如果为圆或封闭图形，传递-1，它将填充形状。</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>lineType</strong>线类型，是否8连线，抗锯齿线等。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="示例-4"><a href="#示例-4" class="headerlink" title="示例"></a>示例</h3><p>下面的例子展示了如何在图像上绘制形状。 同样的程序如下 −</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line">img = cv2.imread(<span class="string">&#x27;test.jpg&#x27;</span>,<span class="number">1</span>)</span><br><span class="line">cv2.line(img,(<span class="number">20</span>,<span class="number">400</span>),(<span class="number">400</span>,<span class="number">20</span>),(<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>),<span class="number">3</span>)</span><br><span class="line">cv2.rectangle(img,(<span class="number">200</span>,<span class="number">100</span>),(<span class="number">400</span>,<span class="number">400</span>),(<span class="number">0</span>,<span class="number">255</span>,<span class="number">0</span>),<span class="number">5</span>)</span><br><span class="line">cv2.circle(img,(<span class="number">80</span>,<span class="number">80</span>), <span class="number">55</span>, (<span class="number">255</span>,<span class="number">255</span>,<span class="number">0</span>), -<span class="number">1</span>)</span><br><span class="line">cv2.ellipse(img, (<span class="number">300</span>,<span class="number">425</span>), (<span class="number">80</span>, <span class="number">20</span>), <span class="number">5</span>, <span class="number">0</span>, <span class="number">360</span>, (<span class="number">0</span>,<span class="number">0</span>,<span class="number">255</span>), -<span class="number">1</span>)</span><br><span class="line">cv2.imshow(<span class="string">&#x27;image&#x27;</span>,img)</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br><span class="line">cv2.destroyAllWindows()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="输出-6"><a href="#输出-6" class="headerlink" title="输出"></a>输出</h3><p><img src="/2024/05/08/OpenCV%E5%9F%BA%E7%A1%80/image/1703401840570.png" alt="1703401840570"></p>
+<h2 id="绘制文字"><a href="#绘制文字" class="headerlink" title="绘制文字"></a>绘制文字</h2><p><strong>cv2.putText()</strong> 函数用于在图像上写入文本。 其命令如下 −</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">img, text, org, fontFace, fontScale, color, thickness)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="Fonts"><a href="#Fonts" class="headerlink" title="Fonts"></a>Fonts</h3><p>OpenCV 支持以下字体−</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>字体名称</th>
+<th>字体大小</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FONT_HERSHEY_SIMPLEX</td>
+<td>0</td>
+</tr>
+<tr>
+<td>FONT_HERSHEY_PLAIN</td>
+<td>1</td>
+</tr>
+<tr>
+<td>FONT_HERSHEY_DUPLEX</td>
+<td>2</td>
+</tr>
+<tr>
+<td>FONT_HERSHEY_COMPLEX</td>
+<td>3</td>
+</tr>
+<tr>
+<td>FONT_HERSHEY_TRIPLEX</td>
+<td>4</td>
+</tr>
+<tr>
+<td>FONT_HERSHEY_COMPLEX_SMALL</td>
+<td>5</td>
+</tr>
+<tr>
+<td>FONT_HERSHEY_SCRIPT_SIMPLEX</td>
+<td>6</td>
+</tr>
+<tr>
+<td>FONT_HERSHEY_SCRIPT_COMPLEX</td>
+<td>7</td>
+</tr>
+<tr>
+<td>FONT_ITALIC</td>
+<td>16</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="示例-5"><a href="#示例-5" class="headerlink" title="示例"></a>示例</h3><p>以下程序将文本标题添加到一张展示著名足球运动员莱昂内尔·梅西的照片中。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import cv2</span><br><span class="line">img = cv2.imread(&#x27;messi.jpg&#x27;,1)</span><br><span class="line">txt=&quot;Lionel Messi&quot;</span><br><span class="line">font = cv2.FONT_HERSHEY_SIMPLEX</span><br><span class="line">cv2.putText(img,txt,(10,100), font, 2,(255,255,255),2,cv2.LINE_AA)</span><br><span class="line"></span><br><span class="line">cv2.imshow(&#x27;image&#x27;,img)</span><br><span class="line">cv2.waitKey(0)</span><br><span class="line">cv2.destroyAllWindows()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="输出-7"><a href="#输出-7" class="headerlink" title="输出"></a>输出</h3><p><img src="/2024/05/08/OpenCV%E5%9F%BA%E7%A1%80/image/1703401953550.png" alt="1703401953550"></p>
+<h1 id="八、OpenCV-Python-处理鼠标事件"><a href="#八、OpenCV-Python-处理鼠标事件" class="headerlink" title="八、OpenCV Python - 处理鼠标事件"></a>八、OpenCV Python - 处理鼠标事件</h1><p>OpenCV 能够使用回调函数注册各种与鼠标相关的事件。 这样做是为了根据鼠标事件的类型启动某个用户定义的操作。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Sr.No</th>
+<th>鼠标事件 &amp; 描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>cv.EVENT_MOUSEMOVE</strong>当鼠标指针移到窗口上时。</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>cv.EVENT_LBUTTONDOWN</strong>表示鼠标左键被按下。</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>cv.EVENT_RBUTTONDOWN</strong>鼠标右键被按下的事件。</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>cv.EVENT_MBUTTONDOWN</strong>表示鼠标中键被按下。</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>cv.EVENT_LBUTTONUP</strong>当鼠标左键被释放时。</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>cv.EVENT_RBUTTONUP</strong>当鼠标右键被释放时。</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>cv.EVENT_MBUTTONUP</strong>表示释放鼠标中键。</td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>cv.EVENT_LBUTTONDBLCLK</strong>双击鼠标左键时发生此事件。</td>
+</tr>
+<tr>
+<td>9</td>
+<td><strong>cv.EVENT_RBUTTONDBLCLK</strong>表示双击鼠标右键。</td>
+</tr>
+<tr>
+<td>10</td>
+<td><strong>cv.EVENT_MBUTTONDBLCLK</strong>表示双击鼠标中键。</td>
+</tr>
+<tr>
+<td>11</td>
+<td><strong>cv.EVENT_MOUSEWHEEL</strong>向前滚动为正，向后滚动为负。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>要在鼠标事件上触发函数，必须在 <strong>setMouseCallback()</strong> 函数的帮助下进行注册。 相同的命令如下 −</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cv2.setMouseCallback(window, callbak_function)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>此函数将事件的类型和位置传递给回调函数以供进一步处理。</p>
+<hr>
+<h2 id="示例1-1"><a href="#示例1-1" class="headerlink" title="示例1"></a>示例1</h2><p>每当左键双击事件发生在显示图像作为背景的窗口上时，以下代码会绘制一个圆圈 −</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import cv2 as cv</span><br><span class="line"># mouse callback function</span><br><span class="line">def drawfunction(event,x,y,flags,param):</span><br><span class="line">   if event == cv.EVENT_LBUTTONDBLCLK:</span><br><span class="line">      cv.circle(img,(x,y),20,(255,255,255),-1)</span><br><span class="line">img = cv.imread(&#x27;lena.png&#x27;)</span><br><span class="line">cv.namedWindow(&#x27;image&#x27;)</span><br><span class="line">cv.setMouseCallback(&#x27;image&#x27;,drawfunction)</span><br><span class="line">while(1):</span><br><span class="line">   cv.imshow(&#x27;image&#x27;,img)</span><br><span class="line">   key=cv.waitKey(1)</span><br><span class="line">   if key == 27:</span><br><span class="line">      break</span><br><span class="line">cv.destroyAllWindows()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="输出-8"><a href="#输出-8" class="headerlink" title="输出"></a>输出</h2><p>运行上面的程序并在随机位置双击。 会出现类似的输出 −</p>
+<p><img src="/2024/05/08/OpenCV%E5%9F%BA%E7%A1%80/image/1703402579044.png" alt="1703402579044"></p>
+<h2 id="示例2-1"><a href="#示例2-1" class="headerlink" title="示例2"></a>示例2</h2><p>以下程序根据用户输入（1,2 或 3）以交互方式绘制矩形、直线或圆形 −</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> cv2 <span class="keyword">as</span> cv</span><br><span class="line"><span class="comment"># mouse callback function</span></span><br><span class="line"></span><br><span class="line">drawing = <span class="literal">True</span></span><br><span class="line">shape = <span class="string">&#x27;r&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">draw_circle</span>(<span class="params">event,x,y,flags,param</span>):</span><br><span class="line">   <span class="keyword">global</span> x1, x2</span><br><span class="line">   <span class="keyword">if</span> event == cv.EVENT_LBUTTONDOWN:</span><br><span class="line">      drawing = <span class="literal">True</span></span><br><span class="line">      x1, x2 = x, y</span><br><span class="line">   <span class="keyword">elif</span> event == cv.EVENT_LBUTTONUP:</span><br><span class="line">      drawing = <span class="literal">False</span></span><br><span class="line">      <span class="keyword">if</span> shape == <span class="string">&#x27;r&#x27;</span>:</span><br><span class="line">         cv.rectangle(img,(x1,x2),(x,y),(<span class="number">0</span>,<span class="number">255</span>,<span class="number">0</span>),-<span class="number">1</span>)</span><br><span class="line">      <span class="keyword">if</span> shape == <span class="string">&#x27;l&#x27;</span>:</span><br><span class="line">         cv.line(img,(x1,x2),(x,y),(<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>),<span class="number">3</span>)</span><br><span class="line">      <span class="keyword">if</span> shape==<span class="string">&#x27;c&#x27;</span>:</span><br><span class="line">         cv.circle(img,(x,y), <span class="number">10</span>, (<span class="number">255</span>,<span class="number">255</span>,<span class="number">0</span>), -<span class="number">1</span>)</span><br><span class="line">img = cv.imread(<span class="string">&#x27;lena.jpg&#x27;</span>)</span><br><span class="line">cv.namedWindow(<span class="string">&#x27;image&#x27;</span>)</span><br><span class="line">cv.setMouseCallback(<span class="string">&#x27;image&#x27;</span>,draw_circle)</span><br><span class="line"><span class="keyword">while</span>(<span class="number">1</span>):</span><br><span class="line">   cv.imshow(<span class="string">&#x27;image&#x27;</span>,img)</span><br><span class="line">   key = cv.waitKey(<span class="number">1</span>)</span><br><span class="line">   <span class="keyword">if</span> key == <span class="built_in">ord</span>(<span class="string">&#x27;1&#x27;</span>):</span><br><span class="line">      shape = <span class="string">&#x27;r&#x27;</span></span><br><span class="line">   <span class="keyword">if</span> key == <span class="built_in">ord</span>(<span class="string">&#x27;2&#x27;</span>):</span><br><span class="line">      shape = <span class="string">&#x27;l&#x27;</span></span><br><span class="line">   <span class="keyword">if</span> key == <span class="built_in">ord</span>(<span class="string">&#x27;3&#x27;</span>):</span><br><span class="line">      shape = <span class="string">&#x27;c&#x27;</span></span><br><span class="line"></span><br><span class="line">   <span class="comment">#print (shape)</span></span><br><span class="line">   <span class="keyword">if</span> key == <span class="number">27</span>:</span><br><span class="line">      <span class="keyword">break</span></span><br><span class="line">cv.destroyAllWindows()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>如果按下’1’，在窗口表面，在鼠标左键上下坐标之间绘制一个矩形。</p>
+<p>如果用户选择 2，则使用坐标作为端点绘制一条线。</p>
+<p>如果用户选择 3 时，它会在鼠标松开事件的坐标处绘制圆。</p>
+<p>下图是上述程序执行成功后的输出 −</p>
+<p><img src="/2024/05/08/OpenCV%E5%9F%BA%E7%A1%80/image/1703402961745.png" alt="1703402961745"></p>
+<h1 id="九、OpenCV-Python-添加轨迹栏"><a href="#九、OpenCV-Python-添加轨迹栏" class="headerlink" title="九、OpenCV Python - 添加轨迹栏"></a>九、OpenCV Python - 添加轨迹栏</h1><p>OpenCV 中的 Trackbar (轨迹栏)是一个滑块控件，它通过手动在栏上滑动选项卡来帮助从连续范围中选择变量的值。 选项卡的位置与值同步。</p>
+<p>createTrackbar() 函数使用以下命令创建一个 Trackbar 对象 −</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cv2.createTrackbar(trackbarname, winname, value, count, TrackbarCallback)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>在下面的示例中，提供了三个轨迹条供用户在灰度范围 0 到 255 之间设置 R、G 和 B 的值。</p>
+<p>使用轨迹栏位置值，绘制一个矩形，其填充颜色对应于 RGB 颜色值。</p>
+<hr>
+<h2 id="示例-6"><a href="#示例-6" class="headerlink" title="示例"></a>示例</h2><p>下面的程序是添加一个 trackbar −</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> cv2 <span class="keyword">as</span> cv</span><br><span class="line">img = np.zeros((<span class="number">300</span>,<span class="number">400</span>,<span class="number">3</span>), np.uint8)</span><br><span class="line">cv.namedWindow(<span class="string">&#x27;image&#x27;</span>)</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">nothing</span>(<span class="params">x</span>):</span><br><span class="line">   <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># create trackbars for color change</span></span><br><span class="line">cv.createTrackbar(<span class="string">&#x27;R&#x27;</span>,<span class="string">&#x27;image&#x27;</span>,<span class="number">0</span>,<span class="number">255</span>,nothing)</span><br><span class="line">cv.createTrackbar(<span class="string">&#x27;G&#x27;</span>,<span class="string">&#x27;image&#x27;</span>,<span class="number">0</span>,<span class="number">255</span>,nothing)</span><br><span class="line">cv.createTrackbar(<span class="string">&#x27;B&#x27;</span>,<span class="string">&#x27;image&#x27;</span>,<span class="number">0</span>,<span class="number">255</span>,nothing)</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span>(<span class="number">1</span>):</span><br><span class="line">   cv.imshow(<span class="string">&#x27;image&#x27;</span>,img)</span><br><span class="line">   k = cv.waitKey(<span class="number">1</span>) &amp; <span class="number">0xFF</span></span><br><span class="line">   <span class="keyword">if</span> k == <span class="number">27</span>:</span><br><span class="line">      <span class="keyword">break</span></span><br><span class="line">   <span class="comment"># get current positions of four trackbars</span></span><br><span class="line">   r = cv.getTrackbarPos(<span class="string">&#x27;R&#x27;</span>,<span class="string">&#x27;image&#x27;</span>)</span><br><span class="line">   g = cv.getTrackbarPos(<span class="string">&#x27;G&#x27;</span>,<span class="string">&#x27;image&#x27;</span>)</span><br><span class="line">   b = cv.getTrackbarPos(<span class="string">&#x27;B&#x27;</span>,<span class="string">&#x27;image&#x27;</span>)</span><br><span class="line"></span><br><span class="line">   <span class="comment">#s = cv.getTrackbarPos(switch,&#x27;image&#x27;)</span></span><br><span class="line">   <span class="comment">#img[:] = [b,g,r]</span></span><br><span class="line">   cv.rectangle(img, (<span class="number">100</span>,<span class="number">100</span>),(<span class="number">200</span>,<span class="number">200</span>), (b,g,r),-<span class="number">1</span>)</span><br><span class="line">cv.destroyAllWindows()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="输出-9"><a href="#输出-9" class="headerlink" title="输出"></a>输出</h2><p><img src="/2024/05/08/OpenCV%E5%9F%BA%E7%A1%80/image/1703408700404.png" alt="1703408700404"></p>
+<h1 id="十、OpenCV-Python-调整图像大小和旋转图像"><a href="#十、OpenCV-Python-调整图像大小和旋转图像" class="headerlink" title="十、OpenCV Python - 调整图像大小和旋转图像"></a>十、OpenCV Python - 调整图像大小和旋转图像</h1><p>在本章中，我们将学习如何借助 OpenCV Python 调整图像大小和旋转图像。</p>
+<hr>
+<h2 id="调整图像大小"><a href="#调整图像大小" class="headerlink" title="调整图像大小"></a>调整图像大小</h2><p>可以使用 cv2.resize() 函数放大或缩小图像。</p>
+<p> <strong>resize()</strong> 函数使用如下 −</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">resize(src, dsize, dst, fx, fy, interpolation)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>一般来说，interpolation(插值)是在已知数据点之间估计值的过程。</p>
+<p>当图形数据包含间隙时，但间隙的任一侧或间隙内的几个特定点都有数据可用。 插值使我们能够估计间隙内的值。</p>
+<p>在上面的 resize() 函数中，interpolation(插值)标志确定用于计算目标图像大小的插值类型。</p>
+<h3 id="插值类型"><a href="#插值类型" class="headerlink" title="插值类型"></a>插值类型</h3><p>插值类型如下 −</p>
+<ul>
+<li><strong>INTER_NEAREST</strong> − 最近邻插值法。</li>
+<li><strong>INTER_LINEAR</strong> − 双线性插值（默认使用）</li>
+<li><strong>INTER_AREA</strong> − 使用像素面积关系重采样。 它是图像抽取的首选方法，但当图像被缩放时，它类似于 INTER_NEAREST 方法。</li>
+<li><strong>INTER_CUBIC</strong> − 4x4 像素邻域的 bicubic 插值</li>
+<li><strong>INTER_LANCZOS4</strong> − 8x8 像素邻域上的 Lanczos 插值</li>
+</ul>
+<p>首选的插值方法是用于缩小的 cv2.INTER_AREA 和用于缩放的 cv2.INTER_CUBIC (slow) &amp; cv2.INTER_LINEAR。</p>
+<h3 id="示例-7"><a href="#示例-7" class="headerlink" title="示例"></a>示例</h3><p>以下代码将”messi.jpg”图像的大小调整为原始高度和宽度的一半。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import cv2</span><br><span class="line">img = cv2.imread(&#x27;messi.JPG&#x27;,1)</span><br><span class="line">height, width = img.shape[:2]</span><br><span class="line">res = cv2.resize(img,(int(width/2), int(height/2)), interpolation =</span><br><span class="line">cv2.INTER_AREA)</span><br><span class="line"></span><br><span class="line">cv2.imshow(&#x27;image&#x27;,res)</span><br><span class="line">cv2.waitKey(0)</span><br><span class="line">cv2.destroyAllWindows()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="输出-10"><a href="#输出-10" class="headerlink" title="输出"></a>输出</h3><p><img src="/2024/05/08/OpenCV%E5%9F%BA%E7%A1%80/image/1703408837791.png" alt="1703408837791"></p>
+<h2 id="旋转图片"><a href="#旋转图片" class="headerlink" title="旋转图片"></a>旋转图片</h2><p>OpenCV 使用仿射变换函数对图像进行平移和旋转等操作。 仿射变换是一种可以表示为矩阵乘法（线性变换）后跟向量加法（平移）形式的变换。</p>
+<p>cv2模块提供了<strong>cv2.warpAffine</strong>和<strong>cv2.warpPerspective</strong>两个函数，可以进行各种变换。 cv2.warpAffine 采用 2x3 变换矩阵，而 cv2.warpPerspective 采用 3x3 变换矩阵作为输入。</p>
+<p>为了找到这个旋转变换矩阵，OpenCV提供了一个函数 <strong>cv2.getRotationMatrix2D</strong> ，如下 −</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">getRotationMatrix2D(center, angle, scale)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>然后我们将 <strong>warpAffine</strong> 函数应用于 getRotationMatrix2D() 函数返回的矩阵以获得旋转图像。</p>
+<p>以下程序将原始图像旋转 90 度而不改变尺寸 −</p>
+<h3 id="示例-8"><a href="#示例-8" class="headerlink" title="示例"></a>示例</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import cv2</span><br><span class="line">img = cv2.imread(&#x27;OpenCV_Logo.png&#x27;,1)</span><br><span class="line">h, w = img.shape[:2]</span><br><span class="line"></span><br><span class="line">center = (w / 2, h / 2)</span><br><span class="line">mat = cv2.getRotationMatrix2D(center, 90, 1)</span><br><span class="line">rotimg = cv2.warpAffine(img, mat, (h, w))</span><br><span class="line">cv2.imshow(&#x27;original&#x27;,img)</span><br><span class="line">cv2.imshow(&#x27;rotated&#x27;, rotimg)</span><br><span class="line">cv2.waitKey(0)</span><br><span class="line">cv2.destroyAllWindows()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="输出-11"><a href="#输出-11" class="headerlink" title="输出"></a>输出</h3><p><strong>Original Image</strong></p>
+<p><img src="/2024/05/08/OpenCV%E5%9F%BA%E7%A1%80/image/1703408946033.png" alt="1703408946033"></p>
+<p><strong>Rotated Image</strong></p>
+<p><img src="/2024/05/08/OpenCV%E5%9F%BA%E7%A1%80/image/1703408969467.png" alt="1703408969467"></p>
+<h1 id="十一、OpenCV-Python-图像阈值"><a href="#十一、OpenCV-Python-图像阈值" class="headerlink" title="十一、OpenCV Python - 图像阈值"></a>十一、OpenCV Python - 图像阈值</h1><p>在数字图像处理中，阈值处理是基于像素强度的阈值创建二值图像的过程。 阈值处理将前景像素与背景像素分开。</p>
+<p>OpenCV 提供函数来执行<strong>简单和自适应</strong> 的阈值。</p>
+<p>在简单的阈值化中，所有值小于阈值的像素都设置为零，其余为最大像素值。 这是最简单的阈值处理形式。</p>
+<p><strong>cv2.threshold()</strong> 函数具有以下定义。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cv2.threshold((src, thresh, maxval, type, dst)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="参数-1"><a href="#参数-1" class="headerlink" title="参数"></a>参数</h2><p>图像阈值化的参数如下 −</p>
+<ul>
+<li>Src: 输入数组。</li>
+<li>Dst：相同大小的输出数组。</li>
+<li>Thresh: 阈值。</li>
+<li>Maxval：最大值。</li>
+<li>Type: 阈值类型。</li>
+</ul>
+<hr>
+<h2 id="阈值类型"><a href="#阈值类型" class="headerlink" title="阈值类型"></a>阈值类型</h2><p>其他类型的阈值列举如下 −</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Sr.No</th>
+<th>类型 &amp; 函数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>cv.THRESH_BINARY</strong>dst(x,y) = maxval if src(x,y)&gt;thresh 0 otherwise</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>cv.THRESH_BINARY_INV</strong>dst(x,y)=0 if src(x,y)&gt;thresh maxval otherwise</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>cv.THRESH_TRUNC</strong>dst(x,y)=threshold if src(x,y)&gt;thresh src(x,y) otherwise</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>cv.THRESH_TOZERO</strong>dst(x,y)=src(x,y) if src(x,y)&gt;thresh 0 otherwise</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>cv.THRESH_TOZERO_INV</strong>dst(x,y)=0 if src(x,y)&gt;thresh src(x,y)otherwise</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>根据下图，这些阈值类型导致对输入图像的操作 −</p>
+<p><img src="/2024/05/08/OpenCV%E5%9F%BA%E7%A1%80/image/1703409116630.png" alt="1703409116630"></p>
+<p>threshold() 函数返回使用的阈值和阈值图像。</p>
+<p>以下程序通过将阈值设置为 127，从原始图像生成灰度值梯度从 255 到 0 的二值图像。</p>
+<h2 id="示例-9"><a href="#示例-9" class="headerlink" title="示例"></a>示例</h2><p>使用 Matplotlib 库并排绘制原始和结果阈值二进制图像。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import cv2 as cv</span><br><span class="line">import numpy as np</span><br><span class="line">from matplotlib import pyplot as plt</span><br><span class="line">img = cv.imread(&#x27;gradient.png&#x27;,0)</span><br><span class="line">ret,img1 = cv.threshold(img,127,255,cv.THRESH_BINARY)</span><br><span class="line"></span><br><span class="line">plt.subplot(2,3,1),plt.imshow(img,&#x27;gray&#x27;,vmin=0,vmax=255)</span><br><span class="line">plt.title(&#x27;Original&#x27;)</span><br><span class="line">plt.subplot(2,3,2),plt.imshow(img1,&#x27;gray&#x27;,vmin=0,vmax=255)</span><br><span class="line">plt.title(&#x27;Binary&#x27;)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="输出-12"><a href="#输出-12" class="headerlink" title="输出"></a>输出</h2><p><img src="/2024/05/08/OpenCV%E5%9F%BA%E7%A1%80/image/1703409323801.png" alt="1703409323801"></p>
+<p>自适应阈值化根据像素周围的小区域确定像素的阈值。 因此，对于同一图像的不同区域获得了不同的阈值。 这为具有不同亮度的图像提供了更好的结果。</p>
+<p>cv2.adaptiveThreshold() 方法采用以下输入参数 −</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cv.adaptiveThreshold( src, maxValue, adaptiveMethod, thresholdType, blockSize, C[, dst] )</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>adaptiveMethod 具有以下枚举值 −</p>
+<ul>
+<li><strong>cv.ADAPTIVE_THRESH_MEAN_C</strong> − 阈值是邻域面积的平均值减去常数C。</li>
+<li><strong>cv.ADAPTIVE_THRESH_GAUSSIAN_C</strong> − 阈值是邻域值减去常数C的高斯加权和。</li>
+</ul>
+<hr>
+<h2 id="示例-10"><a href="#示例-10" class="headerlink" title="示例"></a>示例</h2><p>在下面的示例中，原始图像 (messi.jpg 应用了均值和高斯自适应阈值。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import cv2 as cv</span><br><span class="line">import numpy as np</span><br><span class="line">from matplotlib import pyplot as plt</span><br><span class="line">img = cv.imread(&#x27;messi.jpg&#x27;,0)</span><br><span class="line">img = cv.medianBlur(img,5)</span><br><span class="line">th1 = cv.adaptiveThreshold(img,255,cv.ADAPTIVE_THRESH_MEAN_C,\</span><br><span class="line">   cv.THRESH_BINARY,11,2)</span><br><span class="line">th2 = cv.adaptiveThreshold(img,255,cv.ADAPTIVE_THRESH_GAUSSIAN_C,\</span><br><span class="line">   cv.THRESH_BINARY,11,2)</span><br><span class="line">titles = [&#x27;Original&#x27;, &#x27;Mean Thresholding&#x27;, &#x27;Gaussian Thresholding&#x27;]</span><br><span class="line">images = [img, th1, th2]</span><br><span class="line">for i in range(3):</span><br><span class="line">   plt.subplot(2,2,i+1),plt.imshow(images[i],&#x27;gray&#x27;)</span><br><span class="line">   plt.title(titles[i])</span><br><span class="line">   plt.xticks([]),plt.yticks([])</span><br><span class="line">plt.show()</span><br><span class="line"> </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="输出-13"><a href="#输出-13" class="headerlink" title="输出"></a>输出</h2><p>使用 matplotlib 绘制原始和自适应阈值二进制图像，如下所示 −</p>
+<p><img src="/2024/05/08/OpenCV%E5%9F%BA%E7%A1%80/image/1703409452104.png" alt="1703409452104"></p>
+<h2 id="示例-11"><a href="#示例-11" class="headerlink" title="示例"></a>示例</h2><p>OTSU(最大类间方差)算法根据图像直方图自动确定阈值。 除了 THRESH-BINARY 标志外，我们还需要传递 cv.THRES_OTSU 标志。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import cv2 as cv</span><br><span class="line">import numpy as np</span><br><span class="line">from matplotlib import pyplot as plt</span><br><span class="line">img = cv.imread(&#x27;messi.jpg&#x27;,0)</span><br><span class="line"># global thresholding</span><br><span class="line">ret1,img1 = cv.threshold(img,127,255,cv.THRESH_BINARY)</span><br><span class="line"># Otsu&#x27;s thresholding</span><br><span class="line">ret2,img2 = cv.threshold(img,0,255,cv.THRESH_BINARY+cv.THRESH_OTSU)</span><br><span class="line">plt.subplot(2,2,1),plt.imshow(img,&#x27;gray&#x27;,vmin=0,vmax=255)</span><br><span class="line">plt.title(&#x27;Original&#x27;)</span><br><span class="line">plt.subplot(2,2,2),plt.imshow(img1,&#x27;gray&#x27;)</span><br><span class="line"></span><br><span class="line">plt.title(&#x27;Binary&#x27;)</span><br><span class="line">plt.subplot(2,2,3),plt.imshow(img2,&#x27;gray&#x27;)</span><br><span class="line">plt.title(&#x27;OTSU&#x27;)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="输出-14"><a href="#输出-14" class="headerlink" title="输出"></a>输出</h2><p>matplotlib 的绘图结果如下 −</p>
+<p><img src="/2024/05/08/OpenCV%E5%9F%BA%E7%A1%80/image/1703409501583.png" alt="1703409501583"></p>
+<h1 id="十二、OpenCV-Python-图像过滤"><a href="#十二、OpenCV-Python-图像过滤" class="headerlink" title="十二、OpenCV Python - 图像过滤"></a>十二、OpenCV Python - 图像过滤</h1><p>图像基本上是一个像素矩阵，由对应于灰度值的 0 到 255 之间的二进制值表示。 彩色图像将是一个三维矩阵，其中包含与 RGB 对应的多个通道。</p>
+<p>图像过滤是对像素值进行平均以改变原始图像的阴影、亮度、对比度等的过程。</p>
+<p>通过应用低通滤波器，我们可以去除图像中的任何滤波。 高通滤波器帮助检测边缘。</p>
+<p>OpenCV 库提供了<strong>cv2.filter2D()</strong> 函数。 它通过大小为 3X3 或 5X5 等的方阵的内核对原始图像执行卷积。</p>
+<p>卷积在图像矩阵上水平和垂直滑动核矩阵。 对于每个放置，将内核下的所有像素相加，取内核下像素的平均值，并用平均值替换中心像素。</p>
+<p>对所有像素进行此操作，得到输出图像像素矩阵。 请参考下图 −</p>
+<p><img src="/2024/05/08/OpenCV%E5%9F%BA%E7%A1%80/image/1703409597782.png" alt="1703409597782"></p>
+<p>cv2.filter2D() 函数需要输入数组、内核矩阵和输出数组参数。</p>
+<hr>
+<h2 id="示例-12"><a href="#示例-12" class="headerlink" title="示例"></a>示例</h2><p>下图使用此函数获得平均图像作为 2D 卷积的结果。 相同的程序如下 −</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> cv2 <span class="keyword">as</span> cv</span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</span><br><span class="line">img = cv.imread(<span class="string">&#x27;opencv_logo_gs.png&#x27;</span>)</span><br><span class="line">kernel = np.ones((<span class="number">3</span>,<span class="number">3</span>),np.float32)/<span class="number">9</span></span><br><span class="line">dst = cv.filter2D(img,-<span class="number">1</span>,kernel)</span><br><span class="line">plt.subplot(<span class="number">121</span>),plt.imshow(img),plt.title(<span class="string">&#x27;Original&#x27;</span>)</span><br><span class="line">plt.xticks([]), plt.yticks([])</span><br><span class="line">plt.subplot(<span class="number">122</span>),plt.imshow(dst),plt.title(<span class="string">&#x27;Convolved&#x27;</span>)</span><br><span class="line">plt.xticks([]), plt.yticks([])</span><br><span class="line">plt.show()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="输出-15"><a href="#输出-15" class="headerlink" title="输出"></a>输出</h2><p><img src="/2024/05/08/OpenCV%E5%9F%BA%E7%A1%80/image/1703409725993.png" alt="1703409725993"></p>
+<h2 id="过滤函数的类型"><a href="#过滤函数的类型" class="headerlink" title="过滤函数的类型"></a>过滤函数的类型</h2><p>OpenCV中其他类型的过滤函数包括 −</p>
+<ul>
+<li><strong>BilateralFilter</strong> − 减少不需要的滤波，保持边缘完整。</li>
+<li><strong>BoxFilter</strong> − 这是平均模糊操作。</li>
+<li><strong>GaussianBlur</strong> − 消除噪声和边缘等高频内容。</li>
+<li><strong>MedianBlur</strong> − 它取内核下所有像素的中值代替中心值，而不是平均值。</li>
+</ul>
+<h1 id="十三、OpenCV-Python-边缘检测"><a href="#十三、OpenCV-Python-边缘检测" class="headerlink" title="十三、OpenCV Python - 边缘检测"></a>十三、OpenCV Python - 边缘检测</h1><p>这里的边缘指的是图像中物体的边界。 OpenCV 有一个 <strong>cv2.Canny()</strong> 函数，它通过实施 Canny 算法来识别图像中各种对象的边缘。</p>
+<p>Canny 边缘检测算法由 John Canny 开发。 根据它，对象的边缘是通过执行以下步骤来确定的 −</p>
+<p>第一步是减少图像中的噪声像素。 这是通过应用 5X5 高斯滤波器来完成的。</p>
+<p>第二步涉及找到图像的强度梯度。 第一阶段的平滑图像通过应用Sobel算子进行滤波以获得水平和垂直方向（G^x^和G ^y^ ）的一阶导数。</p>
+<p>均方根值给出边缘梯度，导数的tan反比给出边缘方向。</p>
+<script type="math/tex; mode=display">
+\mathrm{Edge \:gradient\:G\:=\:\sqrt{G_x^2+G_y^2}}</script><script type="math/tex; mode=display">
+\mathrm{Angle\:\theta\:=\:\tan^{-1}(\frac{G_{y}}{G_{x}})}</script><p>在获得梯度幅度和方向后，对图像进行全面扫描以去除可能不构成边缘的任何不需要的像素。</p>
+<p>下一步是使用 minval 和 maxval 阈值执行滞后阈值。 小于 minval 和 maxval 的强度梯度是非边缘，因此被丢弃。 介于两者之间的那些根据它们的连通性被视为边缘点或非边缘。</p>
+<p>所有这些步骤都是由 OpenCV 的 cv2.Canny() 函数执行的，该函数需要输入图像数组以及 minval 和 maxval 参数。</p>
+<hr>
+<h2 id="示例-13"><a href="#示例-13" class="headerlink" title="示例"></a>示例</h2><p>这是 canny 边缘检测的例子。 相同的程序如下 −</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> cv2 <span class="keyword">as</span> cv</span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</span><br><span class="line">img = cv.imread(<span class="string">&#x27;lena.jpg&#x27;</span>, <span class="number">0</span>)</span><br><span class="line">edges = cv.Canny(img,<span class="number">100</span>,<span class="number">200</span>)</span><br><span class="line">plt.subplot(<span class="number">121</span>),plt.imshow(img,cmap = <span class="string">&#x27;gray&#x27;</span>)</span><br><span class="line">plt.title(<span class="string">&#x27;Original Image&#x27;</span>), plt.xticks([]), plt.yticks([])</span><br><span class="line">plt.subplot(<span class="number">122</span>),plt.imshow(edges,cmap = <span class="string">&#x27;gray&#x27;</span>)</span><br><span class="line">plt.title(<span class="string">&#x27;Edges of original Image&#x27;</span>), plt.xticks([]), plt.yticks([])</span><br><span class="line">plt.show()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="输出-16"><a href="#输出-16" class="headerlink" title="输出"></a>输出</h2><p><img src="/2024/05/08/OpenCV%E5%9F%BA%E7%A1%80/image/1703409777238.png" alt="1703409777238"></p>
+<h1 id="十四、OpenCV-Python-直方图"><a href="#十四、OpenCV-Python-直方图" class="headerlink" title="十四、OpenCV Python - 直方图"></a>十四、OpenCV Python - 直方图</h1><p>直方图显示图像中的强度分布。 它在 X 轴上绘制像素值（0 到 255），在 Y 轴上绘制像素数。</p>
+<p>利用直方图，可以了解指定图像的对比度、亮度和强度分布。 直方图中的 bin 表示 X 轴上值的增量部分。</p>
+<p>在我们的例子中，它是像素值，默认的 bin 大小是 1。</p>
+<p>在 OpenCV 库中，<strong>cv2.calcHist()</strong> 函数根据输入图像计算直方图。 该函数的命令如下 −</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cv.calcHist(images, channels, mask, histSize, ranges)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="参数-2"><a href="#参数-2" class="headerlink" title="参数"></a>参数</h2><p> <strong>cv2.calcHist()</strong> 函数的参数如下 −</p>
+<ul>
+<li><strong>images</strong> − 它是 uint8 或 float32 类型的源图像，在方括号中，即”[img]”。</li>
+<li><strong>channels</strong> − 它是我们计算直方图的通道的索引。 对于灰度图像，它的值为[0]。 对于 BGR 图像，可以通过 [0]、[1] 或 [2] 来计算每个通道的直方图。</li>
+<li><strong>mask</strong> − 对于完整图像，mask(遮罩)图像被指定为”None”。 对于图像的特定区域，您必须为其创建mask(遮罩)图像并将其作为遮罩。</li>
+<li><strong>histSize</strong> − 这代表我们的 BIN 计数。</li>
+<li><strong>ranges</strong> − 通常，它是 [0,256]。</li>
+</ul>
+<hr>
+<h2 id="使用-Matplotlib-绘制直方图"><a href="#使用-Matplotlib-绘制直方图" class="headerlink" title="使用 Matplotlib 绘制直方图"></a>使用 Matplotlib 绘制直方图</h2><p>可以借助 Matplotlib 的 <strong>pyplot.plot()</strong> 函数或调用 OpenCV 库中的 <strong>Polylines()</strong> 函数来获得直方图。</p>
+<hr>
+<h2 id="示例-14"><a href="#示例-14" class="headerlink" title="示例"></a>示例</h2><p>以下程序计算图像 (lena.jpg) 中每个通道的直方图并绘制每个通道的强度分布 −</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import cv2 as cv</span><br><span class="line">from matplotlib import pyplot as plt</span><br><span class="line">img = cv.imread(&#x27;lena.jpg&#x27;)</span><br><span class="line">color = (&#x27;b&#x27;,&#x27;g&#x27;,&#x27;r&#x27;)</span><br><span class="line">for i,col in enumerate(color):</span><br><span class="line">   hist = cv.calcHist([img],[i],None,[256],[0,256])</span><br><span class="line">   plt.plot(hist, color = col)</span><br><span class="line">   plt.xlim([0,256])</span><br><span class="line">plt.show()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="输出-17"><a href="#输出-17" class="headerlink" title="输出"></a>输出</h2><p><img src="/2024/05/08/OpenCV%E5%9F%BA%E7%A1%80/image/1703410095406.png" alt="1703410095406"></p>
+<h1 id="十五、OpenCV-Python-颜色空间"><a href="#十五、OpenCV-Python-颜色空间" class="headerlink" title="十五、OpenCV Python - 颜色空间"></a>十五、OpenCV Python - 颜色空间</h1><p>颜色空间是描述如何表示颜色的数学模型。 它以特定的、可测量的、固定范围的可能颜色和亮度值来描述。</p>
+<p>OpenCV 支持以下众所周知的颜色空间 −</p>
+<ul>
+<li><strong>RGB 颜色空间</strong> − 它是一个加色空间。 通过组合红色、绿色和蓝色颜色值获得颜色值。 每个都由 0 到 255 之间的数字表示。</li>
+<li><strong>HSV 颜色空间</strong> − H、S 和 V 代表色相、饱和度和明度。 这是 RGB 的替代颜色模型。 该模型应该更接近人眼感知任何颜色的方式。 色调值介于 0 到 179 之间，而 S 和 V 数值介于 0 到 255 之间。</li>
+<li><strong>CMYK 颜色空间</strong> − 与 RGB 不同，CMYK 是一种减色模型。 字母代表青色、洋红色、黄色和黑色。 白光减去红色得到青色，白色减去绿色得到洋红色，白色减去蓝色得到黄色。 所有值都以 0 到 100% 的范围表示。</li>
+<li><strong>CIELAB 颜色空间</strong> − LAB 色彩空间具有三个分量，L 代表亮度，A 颜色分量从绿色到洋红色，B 颜色分量从蓝色到黄色。</li>
+<li><strong>YCrCb 颜色空间</strong> − 这里，Cr 代表 R-Y，Cb 代表 B-Y。 这有助于将亮度与色度分离到不同的通道中。</li>
+</ul>
+<p>OpenCV 支持借助 <strong>cv2.cvtColor()</strong> 函数在颜色空间之间转换图像。</p>
+<p>cv2.cvtColor() 函数的命令如下 −</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cv.cvtColor(src, code, dst)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="转换代码"><a href="#转换代码" class="headerlink" title="转换代码"></a>转换代码</h2><p>转换由以下预定义的转换代码控制。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>转换代码 &amp; Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>cv.COLOR_BGR2BGRA</strong>将 alpha 通道添加到 RGB 或 BGR 图像。</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>cv.COLOR_BGRA2BGR</strong>从 RGB 或 BGR 图像中移除 alpha 通道。</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>cv.COLOR_BGR2GRAY</strong>在 RGB/BGR 和灰度之间转换。</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>cv.COLOR_BGR2YCrCb</strong>将 RGB/BGR 转换为亮度-色度</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>cv.COLOR_BGR2HSV</strong>将 RGB/BGR 转换为 HSV</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>cv.COLOR_BGR2Lab</strong>将 RGB/BGR 转换为 CIE Lab</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>cv.COLOR_HSV2BGR</strong>将 HSV 反向转换为 RGB/BGR</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h2 id="示例-15"><a href="#示例-15" class="headerlink" title="示例"></a>示例</h2><p>以下程序显示了将具有 RGB 颜色空间的原始图像转换为 HSV 和灰色方案 −</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import cv2</span><br><span class="line"></span><br><span class="line">img = cv2.imread(&#x27;messi.jpg&#x27;)</span><br><span class="line">img1 = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)</span><br><span class="line">img2 = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)</span><br><span class="line"># Displaying the image</span><br><span class="line">cv2.imshow(&#x27;original&#x27;, img)</span><br><span class="line">cv2.imshow(&#x27;Gray&#x27;, img1)</span><br><span class="line">cv2.imshow(&#x27;HSV&#x27;, img2)</span><br><span class="line">key=cv2.waitKey(0)</span><br><span class="line">if key==ord(&#x27;s&#x27;):</span><br><span class="line">    cv2.destroyAllWindows()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="输出-18"><a href="#输出-18" class="headerlink" title="输出"></a>输出</h2><p><img src="/2024/05/08/OpenCV%E5%9F%BA%E7%A1%80/image/1703410264914.png" alt="1703410264914"></p>
+<p><img src="/2024/05/08/OpenCV%E5%9F%BA%E7%A1%80/image/1703411178641.png" alt="1703411178641"></p>
+<p><img src="/2024/05/08/OpenCV%E5%9F%BA%E7%A1%80/image/1703411196280.png" alt="1703411196280"></p>
+<h1 id="十六、OpenCV-Python-形态转换"><a href="#十六、OpenCV-Python-形态转换" class="headerlink" title="十六、OpenCV Python - 形态转换"></a>十六、OpenCV Python - 形态转换</h1><p>基于图像形状的简单操作被称为形态变换。 两种最常见的转换是 <strong>侵蚀和膨胀</strong> 。</p>
+<hr>
+<h2 id="侵蚀"><a href="#侵蚀" class="headerlink" title="侵蚀"></a>侵蚀</h2><p>侵蚀消除了前景对象的边界。 类似于二维卷积，一个核在图像A上滑动。如果核下的所有像素都为1，则原始图像中的像素将被保留。</p>
+<p>如果为0，成为侵蚀。 所有靠近边界的像素都被丢弃。 此过程对于去除白噪声很有用。</p>
+<p>OpenCV中 <strong>erode()</strong> 函数的命令如下 −</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cv.erode(src, kernel, dst, anchor, iterations)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="参数-3"><a href="#参数-3" class="headerlink" title="参数"></a>参数</h3><p>OpenCV 中的<strong>erode()</strong> 函数使用以下参数 −</p>
+<p>src 和 dst 参数是相同大小的输入和输出图像数组。 Kernel 是用于腐蚀的结构元素矩阵。 例如，3X3 或 5X5。</p>
+<p>anchor 参数默认为-1，表示锚点元素在中心。 iterations(迭代)是指应用侵蚀的次数。</p>
+<hr>
+<h2 id="膨胀"><a href="#膨胀" class="headerlink" title="膨胀"></a>膨胀</h2><p>它与侵蚀正好相反。 这里，一个像素元素为1，如果kernel下至少有一个像素为1。结果，它增加了图像中的白色区域。</p>
+<p>dilate() 函数的指令如下 −</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cv.dilate(src, kernel, dst, anchor, iterations)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="参数-4"><a href="#参数-4" class="headerlink" title="参数"></a>参数</h3><p><strong>dilate()</strong> 函数具有与 erode() 函数相同的参数。 这两个函数都可以有额外的可选参数，如 BorderType 和 borderValue。</p>
+<p>BorderType 是图像边界的枚举类型（CONSTANT、REPLICATE、TRANSPERANT 等）</p>
+<p>borderValue 用于固定边框的情况。 默认情况下，它是 0。</p>
+<h3 id="示例-16"><a href="#示例-16" class="headerlink" title="示例"></a>示例</h3><p>下面给出的示例程序显示了正在使用的 erode() 和 dilate() 函数 −</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import cv2 as cv</span><br><span class="line">import numpy as np</span><br><span class="line">img = cv.imread(&#x27;LinuxLogo.jpg&#x27;,0)</span><br><span class="line">kernel = np.ones((5,5),np.uint8)</span><br><span class="line">erosion = cv.erode(img,kernel,iterations = 1)</span><br><span class="line">dilation = cv.dilate(img,kernel,iterations = 1)</span><br><span class="line">cv.imshow(&#x27;Original&#x27;, img)</span><br><span class="line">cv.imshow(&#x27;Erosion&#x27;, erosion)</span><br><span class="line">cv.imshow(&#x27;Dialation&#x27;, dilation)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="输出-19"><a href="#输出-19" class="headerlink" title="输出"></a>输出</h3><p><strong>原始图片</strong></p>
+<p><img src="/2024/05/08/OpenCV%E5%9F%BA%E7%A1%80/image/1703412125837.png" alt="1703412125837"></p>
+<p><strong>侵蚀</strong></p>
+<p><img src="/2024/05/08/OpenCV%E5%9F%BA%E7%A1%80/image/1703412146199.png" alt="1703412146199"></p>
+<p><strong>膨胀</strong></p>
+<p><img src="/2024/05/08/OpenCV%E5%9F%BA%E7%A1%80/image/1703412169871.png" alt="1703412169871"></p>
+<h1 id="十七、OpenCV-Python-图像轮廓"><a href="#十七、OpenCV-Python-图像轮廓" class="headerlink" title="十七、OpenCV Python - 图像轮廓"></a>十七、OpenCV Python - 图像轮廓</h1><p>轮廓是连接沿边界的所有连续点的曲线，具有相同的颜色或强度。 轮廓对于形状分析和物体检测非常有用。</p>
+<hr>
+<h2 id="寻找轮廓"><a href="#寻找轮廓" class="headerlink" title="寻找轮廓"></a>寻找轮廓</h2><p>在找到轮廓之前，我们应该应用阈值或 canny 边缘检测。 然后，通过使用<strong>findContours()</strong> 方法，我们可以找到二值图像中的轮廓。</p>
+<p> <strong>findContours()</strong> 函数使用指令如下 −</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cv.findContours(image, mode, method, contours)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="参数-5"><a href="#参数-5" class="headerlink" title="参数"></a>参数</h3><p> <strong>findContours()</strong> 函数的参数如下 −</p>
+<ul>
+<li>image − 来源，一张 8 位单通道图像。</li>
+<li>mode − 轮廓检索模式。</li>
+<li>method − 轮廓近似法。</li>
+</ul>
+<p>mode 参数值列举如下 −</p>
+<ul>
+<li><strong>cv.RETR_EXTERNAL</strong> − 仅检索最外层的轮廓。</li>
+<li><strong>cv.RETR_LIST</strong> − 在不建立任何层次关系的情况下检索所有轮廓。</li>
+<li><strong>cv.RETR_CCOMP</strong> − 检索所有轮廓并将它们组织成双层层次结构。</li>
+<li><strong>cv.RETR_TREE</strong> − 检索所有轮廓并重建嵌套轮廓的完整层次结构。</li>
+</ul>
+<p>另一方面，近似方法可以是以下方法之一 −</p>
+<ul>
+<li><strong>cv.CHAIN_APPROX_NONE</strong> − 存储绝对所有的轮廓点。</li>
+<li><strong>cv.CHAIN_APPROX_SIMPLE</strong> − 压缩水平、垂直和对角线段，只保留它们的端点。</li>
+</ul>
+<hr>
+<h2 id="绘制轮廓"><a href="#绘制轮廓" class="headerlink" title="绘制轮廓"></a>绘制轮廓</h2><p>检测到轮廓向量后，使用 <strong>cv.drawContours()</strong> 函数在原始图像上绘制轮廓。</p>
+<p>cv.drawContours()函数的命令如下 −</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cv.drawContours(image, contours, contourIdx, color)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="参数-6"><a href="#参数-6" class="headerlink" title="参数"></a>参数</h3><p> <strong>drawContours()</strong> 函数的参数如下 −</p>
+<ul>
+<li>image − 目标图像。</li>
+<li>contours − 所有输入轮廓。 每个轮廓都存储为一个点向量。</li>
+<li>contourIdx − 指示要绘制的轮廓的参数。 如果为负，则绘制所有轮廓。</li>
+<li>color − 轮廓的颜色。</li>
+</ul>
+<h3 id="示例-17"><a href="#示例-17" class="headerlink" title="示例"></a>示例</h3><p>以下代码是在具有三个填充黑色的形状的输入图像上绘制轮廓的示例。</p>
+<p>在第一步中，我们获得灰度图像，然后执行 canny 边缘检测。</p>
+<p>然后在生成的图像上调用 findContours() 函数。 它的结果是一个点向量。 然后我们调用 drawContours() 函数。</p>
+<p>完整代码如下 −</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">img = cv2.imread(<span class="string">&#x27;shapes.png&#x27;</span>)</span><br><span class="line">cv2.imshow(<span class="string">&#x27;Original&#x27;</span>, img)</span><br><span class="line">gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)</span><br><span class="line"></span><br><span class="line">canny = cv2.Canny(gray, <span class="number">30</span>, <span class="number">200</span>)</span><br><span class="line"></span><br><span class="line">contours, hierarchy = cv2.findContours(canny,</span><br><span class="line">   cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Number of Contours = &quot;</span> ,<span class="built_in">len</span>(contours))</span><br><span class="line">cv2.imshow(<span class="string">&#x27;Canny Edges&#x27;</span>, canny)</span><br><span class="line"></span><br><span class="line">cv2.drawContours(img, contours, -<span class="number">1</span>, (<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>), <span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">cv2.imshow(<span class="string">&#x27;Contours&#x27;</span>, img)</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br><span class="line">cv2.destroyAllWindows()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="输出-20"><a href="#输出-20" class="headerlink" title="输出"></a>输出</h3><p>原始图像，经过 canny 边缘检测和绘制轮廓的图像将显示在单独的窗口中，如下所示 −</p>
+<p><img src="/2024/05/08/OpenCV%E5%9F%BA%E7%A1%80/image/1703412692047.png" alt="1703412692047"></p>
+<p>经过<strong>canny边缘检测</strong>后，图像将如下所示 −</p>
+<p><img src="/2024/05/08/OpenCV%E5%9F%BA%E7%A1%80/image/1703412706487.png" alt="1703412706487"></p>
+<p>绘制完<strong>轮廓</strong>后，图像如下 −</p>
+<p><img src="/2024/05/08/OpenCV%E5%9F%BA%E7%A1%80/image/1703412724098.png" alt="1703412724098"></p>
+<h1 id="十八、OpenCV-Python-模板匹配"><a href="#十八、OpenCV-Python-模板匹配" class="headerlink" title="十八、OpenCV Python - 模板匹配"></a>十八、OpenCV Python - 模板匹配</h1><p>模板匹配技术用于检测图像中与样本或模板图像匹配的一个或多个区域。</p>
+<p>OpenCV 中的<strong>Cv.matchTemplate()</strong> 函数就是为此而定义的，其命令如下:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cv.matchTemplate(image, templ, method)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>其中image是输入图像，templ（模板）图案要位于的位置。 method 参数采用以下值之一 −</p>
+<ul>
+<li>cv.TM_CCOEFF,</li>
+<li>cv.TM_CCOEFF_NORMED, cv.TM_CCORR,</li>
+<li>cv.TM_CCORR_NORMED,</li>
+<li>cv.TM_SQDIFF,</li>
+<li>cv.TM_SQDIFF_NORMED</li>
+</ul>
+<p>此方法将模板图像滑动到输入图像上。 这是一个类似于卷积的过程，比较模板图像下输入图像的模板和补丁。</p>
+<p>它返回一个灰度图像，其每个像素表示它与模板的匹配程度。 如果输入图像的大小为 (WxH)，模板图像的大小为 (wxh)，则输出图像的大小为 (W-w+1, H-h+1)。 因此，该矩形是您的模板区域。</p>
+<hr>
+<h2 id="示例-18"><a href="#示例-18" class="headerlink" title="示例"></a>示例</h2><p>在下面的示例中，一张印有 Virat Kohli 脸部的图像被用作模板，以与另一幅描绘他与 M.S.Dhoni 合影的图像相匹配。</p>
+<p>以下程序使用 80% 的阈值并在匹配的人脸周围绘制一个矩形 −</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import cv2</span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">img = cv2.imread(&#x27;Dhoni-and-Virat.jpg&#x27;,1)</span><br><span class="line">cv2.imshow(&#x27;Original&#x27;,img)</span><br><span class="line">gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)</span><br><span class="line"></span><br><span class="line">template = cv2.imread(&#x27;virat.jpg&#x27;,0)</span><br><span class="line">cv2.imshow(&#x27;Template&#x27;,template)</span><br><span class="line">w,h = template.shape[0], template.shape[1]</span><br><span class="line"></span><br><span class="line">matched = cv2.matchTemplate(gray,template,cv2.TM_CCOEFF_NORMED)</span><br><span class="line">threshold = 0.8</span><br><span class="line"></span><br><span class="line">loc = np.where( matched &gt;= threshold)</span><br><span class="line"></span><br><span class="line">for pt in zip(*loc[::-1]):</span><br><span class="line">   cv2.rectangle(img, pt, (pt[0] + w, pt[1] + h), (0,255,255), 2)</span><br><span class="line"></span><br><span class="line">cv2.imshow(&#x27;Matched with Template&#x27;,img)</span><br><span class="line"> </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="输出-21"><a href="#输出-21" class="headerlink" title="输出"></a>输出</h2><p>结果的原图、模板和匹配图如下 −</p>
+<h3 id="原始图片"><a href="#原始图片" class="headerlink" title="原始图片"></a>原始图片</h3><p><img src="/2024/05/08/OpenCV%E5%9F%BA%E7%A1%80/image/1703413448297.png" alt="1703413448297"></p>
+<p><strong>模板</strong>如下所示 −</p>
+<p><img src="/2024/05/08/OpenCV%E5%9F%BA%E7%A1%80/image/1703413464744.png" alt="1703413464744"></p>
+<p><strong>匹配模板</strong>时的图片如下 −</p>
+<p><img src="/2024/05/08/OpenCV%E5%9F%BA%E7%A1%80/image/1703413478096.png" alt="1703413478096"></p>
+<h1 id="十九、OpenCV-Python-图像金字塔"><a href="#十九、OpenCV-Python-图像金字塔" class="headerlink" title="十九、OpenCV Python - 图像金字塔"></a>十九、OpenCV Python - 图像金字塔</h1><p>有时，我们可能需要将图像转换为与其原始尺寸不同的尺寸。 为此，您可以放大图像（放大）或缩小图像（缩小）。</p>
+<p>图像金字塔是连续向下采样指定次数的图像集合（由单个原始图像构建）。</p>
+<p>Gaussian 高斯金字塔用于对图像进行下采样，而 Laplacian 拉普拉斯金字塔用于从金字塔较低分辨率的图像重建上采样图像。</p>
+<p>将金字塔视为一组图层。 图像如下所示 −</p>
+<p><img src="/2024/05/08/OpenCV%E5%9F%BA%E7%A1%80/image/1703413622910.png" alt="1703413622910"></p>
+<p>金字塔较高层的图像尺寸较小。 为了在高斯金字塔的下一层生成图像，我们将较低级别的图像与高斯核进行卷积。</p>
+<script type="math/tex; mode=display">
+\frac{1}{16}\begin{bmatrix}1 & 4 & 6 & 4 & 1 \\4 & 16 & 24 & 16 & 4 \\6 & 24 & 36 & 24 & 6 \\4 & 16 & 24 & 16 & 4 \\1 & 4 & 6 & 4 & 1\end{bmatrix}</script><p>现在删除所有偶数行和列。 生成的图像将是其前身面积的 1/4。 在原始图像上迭代此过程会生成整个金字塔。</p>
+<p>为了使图像更大，列用零填充。 首先，放大图像以在每个维度上将原始图像放大一倍，并使用新的偶数行，然后与内核执行卷积以近似缺失像素的值。</p>
+<p><strong>cv.pyrUp()</strong> 函数将原始大小加倍，<strong>cv.pyrDown()</strong> 函数将原始大小减半。</p>
+<h2 id="示例-19"><a href="#示例-19" class="headerlink" title="示例"></a>示例</h2><p>以下程序分别根据用户输入”I”或”o”调用 pyrUp() 和 pyrDown() 函数。</p>
+<p>请注意，当我们缩小图像的尺寸时，图像的信息会丢失。 有时缩小后，再将它重新缩放到原始大小，会丢失一些信息，新图像的分辨率远低于原始图像。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> cv2 <span class="keyword">as</span> cv</span><br><span class="line"></span><br><span class="line">filename = <span class="string">&#x27;chicky_512.png&#x27;</span></span><br><span class="line"></span><br><span class="line">src = cv.imread(filename)</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="number">1</span>:</span><br><span class="line">   <span class="built_in">print</span> (<span class="string">&quot;press &#x27;i&#x27; for zoom in &#x27;o&#x27; for zoom out esc to stop&quot;</span>)</span><br><span class="line">   rows, cols, _channels = <span class="built_in">map</span>(<span class="built_in">int</span>, src.shape)</span><br><span class="line">   cv.imshow(<span class="string">&#x27;Pyramids&#x27;</span>, src)</span><br><span class="line">   k = cv.waitKey(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">   <span class="keyword">if</span> k == <span class="number">27</span>:</span><br><span class="line">      <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">   <span class="keyword">elif</span> <span class="built_in">chr</span>(k) == <span class="string">&#x27;i&#x27;</span>:</span><br><span class="line">      src = cv.pyrUp(src, dstsize=(<span class="number">2</span> * cols, <span class="number">2</span> * rows))</span><br><span class="line"></span><br><span class="line">   <span class="keyword">elif</span> <span class="built_in">chr</span>(k) == <span class="string">&#x27;o&#x27;</span>:</span><br><span class="line">      src = cv.pyrDown(src, dstsize=(cols // <span class="number">2</span>, rows // <span class="number">2</span>))</span><br><span class="line"></span><br><span class="line">cv.destroyAllWindows()</span><br><span class="line"> </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="输出-22"><a href="#输出-22" class="headerlink" title="输出"></a>输出</h2><p><img src="/2024/05/08/OpenCV%E5%9F%BA%E7%A1%80/image/1703413947867.png" alt="1703413947867"></p>
+<p><img src="/2024/05/08/OpenCV%E5%9F%BA%E7%A1%80/image/1703413977465.png" alt="1703413977465"></p>
+<p><img src="/2024/05/08/OpenCV%E5%9F%BA%E7%A1%80/image/1703413996915.png" alt="1703413996915"></p>
+<h1 id="二十、OpenCV-Python-图像添加"><a href="#二十、OpenCV-Python-图像添加" class="headerlink" title="二十、OpenCV Python - 图像添加"></a>二十、OpenCV Python - 图像添加</h1><p>当通过 imread() 函数读取图像时，生成的图像对象实际上是一个二维或三维矩阵，具体取决于图像是灰度图像还是 RGB 图像。</p>
+<p>因此，<strong>cv2.add()</strong> 函数将两个图像矩阵相加并返回另一个图像矩阵。</p>
+<hr>
+<h2 id="示例-20"><a href="#示例-20" class="headerlink" title="示例"></a>示例</h2><p>以下代码读取两个图像并执行它们的二进制加法 −</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import cv2</span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">kalam = cv2.imread(&#x27;kalam.jpg&#x27;)</span><br><span class="line">einst = cv2.imread(&#x27;einstein.jpg&#x27;)</span><br><span class="line">img = cv2.add(kalam, einst)</span><br><span class="line">cv2.imshow(&#x27;addition&#x27;, img)</span><br><span class="line"></span><br><span class="line">cv2.waitKey(0)</span><br><span class="line">cv2.destroyAllWindows()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="Result"><a href="#Result" class="headerlink" title="Result"></a>Result</h2><p><img src="/2024/05/08/OpenCV%E5%9F%BA%E7%A1%80/image/1703414604435.png" alt="1703414604435"></p>
+<p>OpenCV 有一个 <strong>addWeighted()</strong> 函数，而不是线性二进制加法，它执行两个数组的加权和。 相同的命令如下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Cv2.addWeighted(src1, alpha, src2, beta, gamma)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="参数-7"><a href="#参数-7" class="headerlink" title="参数"></a>参数</h2><p> <strong>addWeighted()</strong> 函数的参数如下 −</p>
+<ul>
+<li>src1 − 第一个输入数组。</li>
+<li>alpha − 第一个数组元素的权重。</li>
+<li>src2 − 第二个输入数组的大小和通道数与第一个相同</li>
+<li>beta − 第二个数组元素的权重。</li>
+<li>gamma − 添加到每个总和的标量。</li>
+</ul>
+<p>此函数根据以下等式添加图像 −</p>
+<script type="math/tex; mode=display">
+\mathrm{g(x)=(1-\alpha)f_{0}(x)+\alpha f_{1}(x)}</script><p>利用上面例子得到的图像矩阵进行加权求和。</p>
+<p>通过改变 a 从 0 -&gt; 1，从一个图像到另一个图像的平滑过渡，使它们融合在一起。</p>
+<p>第一张图片的权重为 0.3，第二张图片的权重为 0.7。 伽马系数取0。</p>
+<p> <strong>addWeighted()</strong> 函数的指令如下 −</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">img = cv2.addWeighted(kalam, 0.3, einst, 0.7, 0)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>可以看出图像相加相较于二值相加更加平滑。</p>
+<p><img src="/2024/05/08/OpenCV%E5%9F%BA%E7%A1%80/image/1703414668960.png" alt="1703414668960"></p>
+<h1 id="二十一、OpenCV-Python-图像与Pyramids的融合"><a href="#二十一、OpenCV-Python-图像与Pyramids的融合" class="headerlink" title="二十一、OpenCV Python - 图像与Pyramids的融合"></a>二十一、OpenCV Python - 图像与Pyramids的融合</h1><p>图像的不连续性可以通过使用图像 Pyramids 来最小化。 这会产生无缝的混合图像。</p>
+<p>采取以下步骤来实现最终结果 −</p>
+<p>首先加载图像并为两者找到 Gaussian Pyramids。 相同的程序如下 −</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import cv2</span><br><span class="line">import numpy as np,sys</span><br><span class="line"></span><br><span class="line">kalam = cv2.imread(&#x27;kalam.jpg&#x27;)</span><br><span class="line">einst = cv2.imread(&#x27;einstein.jpg&#x27;)</span><br><span class="line">### generate Gaussian pyramid for first</span><br><span class="line">G = kalam.copy()</span><br><span class="line">gpk = [G]</span><br><span class="line">for i in range(6):</span><br><span class="line">   G = cv2.pyrDown(G)</span><br><span class="line">   gpk.append(G)</span><br><span class="line"># generate Gaussian pyramid for second</span><br><span class="line">G = einst.copy()</span><br><span class="line">gpe = [G]</span><br><span class="line">for i in range(6):</span><br><span class="line">   G = cv2.pyrDown(G)</span><br><span class="line">   gpe.append(G)</span><br><span class="line"> </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>从 Gaussian Pyramids 中，获得相应的 Laplacian Pyramids。 相同的程序如下 −</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># generate Laplacian Pyramid for first</span><br><span class="line">lpk = [gpk[5]]</span><br><span class="line">for i in range(5,0,-1):</span><br><span class="line">   GE = cv2.pyrUp(gpk[i])</span><br><span class="line">   L = cv2.subtract(gpk[i-1],GE)</span><br><span class="line">   lpk.append(L)</span><br><span class="line"></span><br><span class="line"># generate Laplacian Pyramid for second</span><br><span class="line">lpe = [gpe[5]]</span><br><span class="line">for i in range(5,0,-1):</span><br><span class="line">   GE = cv2.pyrUp(gpe[i])</span><br><span class="line">   L = cv2.subtract(gpe[i-1],GE)</span><br><span class="line">   lpe.append(L)</span><br><span class="line"> </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>然后，在每一层 Pyramids 中将第一张图像的左半部分与第二张图像的右半部分连接起来。 相同的程序如下 −</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Now add left and right halves of images in each level</span><br><span class="line">LS = []</span><br><span class="line">for la,lb in zip(lpk,lpe):</span><br><span class="line">   rows,cols,dpt = la.shape</span><br><span class="line">   ls = np.hstack((la[:,0:int(cols/2)], lb[:,int(cols/2):]))</span><br><span class="line">   LS.append(ls)</span><br><span class="line"> </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>最后，从这个联合 Pyramids 重建图像。 下面给出了相同的程序 −</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ls_ = LS[0]</span><br><span class="line">for i in range(1,6):</span><br><span class="line">   ls_ = cv2.pyrUp(ls_)</span><br><span class="line">   ls_ = cv2.add(ls_, LS[i])</span><br><span class="line">   cv2.imshow(&#x27;RESULT&#x27;,ls_)</span><br><span class="line"> </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="整体程序"><a href="#整体程序" class="headerlink" title="整体程序"></a>整体程序</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import cv2 as cv</span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">A = cv.imread(&#x27;apple.jpg&#x27;)</span><br><span class="line">B = cv.imread(&#x27;orange.jpg&#x27;)</span><br><span class="line"></span><br><span class="line"># Resize images to the same size</span><br><span class="line">A = cv.resize(A, (B.shape[1], B.shape[0]))</span><br><span class="line"></span><br><span class="line"># generate Gaussian pyramid for A</span><br><span class="line">G = A.copy()</span><br><span class="line">gpA = [G]</span><br><span class="line">for i in range(6):</span><br><span class="line">    G = cv.pyrDown(G)</span><br><span class="line">    gpA.append(G)</span><br><span class="line"></span><br><span class="line"># generate Gaussian pyramid for B</span><br><span class="line">G = B.copy()</span><br><span class="line">gpB = [G]</span><br><span class="line">for i in range(6):</span><br><span class="line">    G = cv.pyrDown(G)</span><br><span class="line">    gpB.append(G)</span><br><span class="line"></span><br><span class="line"># generate Laplacian Pyramid for A</span><br><span class="line">lpA = [gpA[5]]</span><br><span class="line">for i in range(5, 0, -1):</span><br><span class="line">    GE = cv.pyrUp(gpA[i])</span><br><span class="line">    GE = cv.resize(GE, (gpA[i - 1].shape[1], gpA[i - 1].shape[0]))</span><br><span class="line">    L = cv.subtract(gpA[i-1], GE)</span><br><span class="line">    lpA.append(L)</span><br><span class="line"></span><br><span class="line"># generate Laplacian Pyramid for B</span><br><span class="line">lpB = [gpB[5]]</span><br><span class="line">for i in range(5, 0, -1):</span><br><span class="line">    GE = cv.pyrUp(gpB[i])</span><br><span class="line">    GE = cv.resize(GE, (gpB[i - 1].shape[1], gpB[i - 1].shape[0]))</span><br><span class="line">    L = cv.subtract(gpB[i-1], GE)</span><br><span class="line">    lpB.append(L)</span><br><span class="line"></span><br><span class="line"># Now add left and right halves of images in each level</span><br><span class="line">LS = []</span><br><span class="line">for la, lb in zip(lpA, lpB):</span><br><span class="line">    rows, cols, dpt = la.shape</span><br><span class="line">    ls = np.hstack((la[:, :cols//2], lb[:, cols//2:]))</span><br><span class="line">    LS.append(ls)</span><br><span class="line"></span><br><span class="line"># now reconstruct</span><br><span class="line">ls_ = LS[0]</span><br><span class="line">for i in range(1, 6):</span><br><span class="line">    ls_ = cv.pyrUp(ls_)</span><br><span class="line">    ls_ = cv.add(ls_, cv.resize(LS[i], (ls_.shape[1], ls_.shape[0])))</span><br><span class="line"></span><br><span class="line"># save the blended image</span><br><span class="line">cv.imwrite(&#x27;Pyramid_blending.jpg&#x27;, ls_)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="输出-23"><a href="#输出-23" class="headerlink" title="输出"></a>输出</h2><p>混合后的结果应该是这样的 −</p>
+<p><img src="/2024/05/08/OpenCV%E5%9F%BA%E7%A1%80/image/1703419729204.jpg" alt="1703419729204"></p>
+<h1 id="二十二、OpenCV-Python-傅里叶变换"><a href="#二十二、OpenCV-Python-傅里叶变换" class="headerlink" title="二十二、OpenCV Python - 傅里叶变换"></a>二十二、OpenCV Python - 傅里叶变换</h1><p>傅里叶变换，表示能将满足一定条件的某个函数表示成三角函数（正弦和/或余弦函数）或者它们的积分的线性组合。</p>
+<p>傅立叶变换用于通过将图像分解为正弦分量和余弦分量，将图像从空间域变换到频域。</p>
+<p>在数字图像的情况下，基本灰度图像值通常在 0 到 255 之间。因此，傅里叶变换也需要是 <strong>离散傅里叶变换 (DFT)</strong> 。 它用于查找频域。</p>
+<p>在数学上，二维图像的傅里叶变换表示如下 −</p>
+<script type="math/tex; mode=display">
+\mathrm{F(k,l)=\displaystyle\sum\limits_{i=0}^{N-1}\: \displaystyle\sum\limits_{j=0}^{N-1} f(i,j)\:e^{-i2\pi (\frac{ki}{N},\frac{lj}{N})}}</script><p>如果振幅在短时间内变化快，就可以说它是高频信号。 如果变化缓慢，则为低频信号。</p>
+<p>在图像的情况下，振幅在边缘点或噪声处变化很大。 所以边缘和噪声是图像中的高频内容。 如果幅度没有太大变化，则为低频分量。</p>
+<p>OpenCV 为此提供了函数 <strong>cv.dft()</strong> 和  <strong>cv.idft()</strong> 。</p>
+<p>cv.dft() 执行一维或二维浮点数组的离散傅里叶变换。 相同的命令如下 −</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cv.dft(src, dst, flags)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>这里，</p>
+<ul>
+<li>src − 可以是实数或复数的输入数组。</li>
+<li>dst − 大小和类型取决于标志的输出数组。</li>
+<li>flags − 转换标志，代表 DftFlags 的组合。</li>
+</ul>
+<p>cv.idft() 计算一维或二维数组的逆离散傅里叶变换。 相同的命令如下 −</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cv.idft(src, dst, flags)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>为了获得离散傅立叶变换，将输入图像转换为 np.float32 数据类型。 获得的变换然后用于将零频率分量移动到频谱的中心，从中计算幅度频谱。</p>
+<hr>
+<h2 id="示例-21"><a href="#示例-21" class="headerlink" title="示例"></a>示例</h2><p>下面给出了使用 Matplotlib 的程序，我们绘制了原始图像和幅度谱 −</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> cv2 <span class="keyword">as</span> cv</span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</span><br><span class="line">img = cv.imread(<span class="string">&#x27;lena.jpg&#x27;</span>,<span class="number">0</span>)</span><br><span class="line">dft = cv.dft(np.float32(img),flags = cv.DFT_COMPLEX_OUTPUT)</span><br><span class="line">dft_shift = np.fft.fftshift(dft)</span><br><span class="line">magnitude_spectrum = <span class="number">20</span>*np.log(cv.magnitude(dft_shift[:,:,<span class="number">0</span>],dft_shift[:,:,<span class="number">1</span>]))</span><br><span class="line">plt.subplot(<span class="number">121</span>),plt.imshow(img, cmap = <span class="string">&#x27;gray&#x27;</span>)</span><br><span class="line">plt.title(<span class="string">&#x27;Input Image&#x27;</span>), plt.xticks([]), plt.yticks([])</span><br><span class="line">plt.subplot(<span class="number">122</span>),plt.imshow(magnitude_spectrum, cmap = <span class="string">&#x27;gray&#x27;</span>)</span><br><span class="line">plt.title(<span class="string">&#x27;Magnitude Spectrum&#x27;</span>), plt.xticks([]), plt.yticks([])</span><br><span class="line">plt.show()</span><br><span class="line"> </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="输出-24"><a href="#输出-24" class="headerlink" title="输出"></a>输出</h2><p><img src="/2024/05/08/OpenCV%E5%9F%BA%E7%A1%80/image/1703419317065.png" alt="1703419317065"></p>
+<h1 id="二十三、OpenCV-Python-从相机捕获视频"><a href="#二十三、OpenCV-Python-从相机捕获视频" class="headerlink" title="二十三、OpenCV Python - 从相机捕获视频"></a>二十三、OpenCV Python - 从相机捕获视频</h1><p>通过使用 OpenCV 库中的 <strong>VideoCapture()</strong> 函数，可以非常轻松地在 OpenCV 窗口中从摄像头捕获实时流。</p>
+<p>此函数需要一个设备索引作为参数。 您的计算机可能连接了多个摄像头。 对于内置网络摄像头，它们由从 0 开始的索引枚举。 该函数返回一个 VideoCapture 对象</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cam = cv.VideoCapture(0)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>相机打开后，我们可以借助 <strong>read()</strong> 函数从中读取连续的帧</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ret,frame = cam.read()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>read() 函数读取下一个可用帧和返回值 (True/False)。 此帧现在使用 <strong>cvtColor()</strong> 函数在所需的颜色空间中呈现，并显示在 OpenCV 窗口中。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">img = cv.cvtColor(frame, cv.COLOR_BGR2RGB)</span><br><span class="line"># Display the resulting frame</span><br><span class="line">cv.imshow(&#x27;frame&#x27;, img)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>要将当前帧捕获到图像文件，可以使用<strong>imwrite()</strong> 函数。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cv2.imwrite(“capture.png”, img)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>为了将来自摄像头的实时流保存到视频文件，OpenCV 提供了一个 VideoWriter() 函数。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cv.VideoWriter( filename, fourcc, fps, frameSize)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>fourcc 参数是视频编解码器的标准化代码。 OpenCV 支持各种编解码器，如 DIVX、XVID、MJPG、X264 等。fps 和 framesize 参数取决于视频捕获设备。</p>
+<p>VideoWriter() 函数返回一个 VideoWrite 流对象，抓取的帧在循环中连续写入到该对象。 最后释放frame和VideoWriter对象，完成视频的创建。</p>
+<hr>
+<h2 id="示例-22"><a href="#示例-22" class="headerlink" title="示例"></a>示例</h2><p>以下示例从内置网络摄像头读取实时信息并将其保存到 output.avi 文件中。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import cv2 as cv</span><br><span class="line">cam = cv.VideoCapture(0)</span><br><span class="line">cc = cv.VideoWriter_fourcc(*&#x27;XVID&#x27;)</span><br><span class="line">file = cv.VideoWriter(&#x27;output.avi&#x27;, cc, 15.0, (640, 480))</span><br><span class="line">if not cam.isOpened():</span><br><span class="line">   print(&quot;error opening camera&quot;)</span><br><span class="line">   exit()</span><br><span class="line">while True:</span><br><span class="line">   # Capture frame-by-frame</span><br><span class="line">   ret, frame = cam.read()</span><br><span class="line">   # if frame is read correctly ret is True</span><br><span class="line">   if not ret:</span><br><span class="line">      print(&quot;error in retrieving frame&quot;)</span><br><span class="line">      break</span><br><span class="line">   img = cv.cvtColor(frame, cv.COLOR_BGR2RGB)</span><br><span class="line">   cv.imshow(&#x27;frame&#x27;, img)</span><br><span class="line">   file.write(img)</span><br><span class="line"></span><br><span class="line">   </span><br><span class="line">   if cv.waitKey(1) == ord(&#x27;q&#x27;):</span><br><span class="line">      break</span><br><span class="line"></span><br><span class="line">cam.release()</span><br><span class="line">file.release()</span><br><span class="line">cv.destroyAllWindows()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="二十四、OpenCV-Python-从文件播放视频"><a href="#二十四、OpenCV-Python-从文件播放视频" class="headerlink" title="二十四、OpenCV Python - 从文件播放视频"></a>二十四、OpenCV Python - 从文件播放视频</h1><p><strong>VideoCapture()</strong> 函数还可以从视频文件而不是相机中检索帧。 因此，我们只用要在 OpenCV 窗口中播放的视频文件名替换了相机索引。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">video=cv2.VideoCapture(file)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>虽然这应该足以开始渲染视频文件，但前提是它伴有声音。 声音不会一起播放。 为此，您需要安装 ffpyplayer 模块。</p>
+<hr>
+<h2 id="FFPyPlayer"><a href="#FFPyPlayer" class="headerlink" title="FFPyPlayer"></a>FFPyPlayer</h2><p><strong>FFPyPlayer</strong> 是 FFmpeg 库的 python 绑定，用于播放和写入媒体文件。 要安装，请使用以下命令使用 pip 安装程序实用程序。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip3 install ffpyplayer</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>此模块中 MediaPlayer 对象的 <strong>get_frame()</strong> 方法返回音频帧，该音频帧将与从视频文件中读取的每个帧一起播放。</p>
+<p>以下是播放视频文件及其音频的完整代码 −</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import cv2</span><br><span class="line"></span><br><span class="line">from ffpyplayer.player import MediaPlayer</span><br><span class="line">file=&quot;video.mp4&quot;</span><br><span class="line"></span><br><span class="line">video=cv2.VideoCapture(file)</span><br><span class="line">player = MediaPlayer(file)</span><br><span class="line">while True:</span><br><span class="line">   ret, frame=video.read()</span><br><span class="line">   audio_frame, val = player.get_frame()</span><br><span class="line">   if not ret:</span><br><span class="line">      print(&quot;End of video&quot;)</span><br><span class="line">      break</span><br><span class="line">   if cv2.waitKey(1) == ord(&quot;q&quot;):</span><br><span class="line">      break</span><br><span class="line">   cv2.imshow(&quot;Video&quot;, frame)</span><br><span class="line">   if val != &#x27;eof&#x27; and audio_frame is not None:</span><br><span class="line">      #audio</span><br><span class="line">      img, t = audio_frame</span><br><span class="line">video.release()</span><br><span class="line">cv2.destroyAllWindows()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="二十五、OpenCV-Python-从视频中提取图像"><a href="#二十五、OpenCV-Python-从视频中提取图像" class="headerlink" title="二十五、OpenCV Python - 从视频中提取图像"></a>二十五、OpenCV Python - 从视频中提取图像</h1><p>视频不过是一系列帧，每一帧都是一张图片。 通过使用 OpenCV，可以通过执行 <strong>imwrite()</strong> 函数提取组成视频文件的所有帧，直到视频结束。</p>
+<p><strong>cv2.read()</strong> 函数返回下一个可用帧。 该函数还给出一个返回值，该值在流结束之前一直为 true。 在这里，一个计数器在循环内递增并用作文件名。</p>
+<p>以下程序演示了如何从视频中提取图像 −</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import cv2</span><br><span class="line">import os</span><br><span class="line"></span><br><span class="line">cam = cv2.VideoCapture(&quot;video.avi&quot;)</span><br><span class="line"></span><br><span class="line">frameno = 0</span><br><span class="line">while(True):</span><br><span class="line">   ret,frame = cam.read()</span><br><span class="line">   if ret:</span><br><span class="line">      # if video is still left continue creating images</span><br><span class="line">      name = str(frameno) + &#x27;.jpg&#x27;</span><br><span class="line">      print (&#x27;new frame captured...&#x27; + name)</span><br><span class="line"></span><br><span class="line">      cv2.imwrite(name, frame)</span><br><span class="line">      frameno += 1</span><br><span class="line">   else:</span><br><span class="line">      break</span><br><span class="line"></span><br><span class="line">cam.release()</span><br><span class="line">cv2.destroyAllWindows()</span><br><span class="line"> </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="二十六、OpenCV-Python-图片视频"><a href="#二十六、OpenCV-Python-图片视频" class="headerlink" title="二十六、OpenCV Python - 图片视频"></a>二十六、OpenCV Python - 图片视频</h1><p>在上一章中，我们使用了 VideoWriter() 函数将来自摄像机的实时流保存为视频文件。 要将多个图像拼接成一个视频，我们将使用相同的函数。</p>
+<p>首先，确保所有需要的图像都在一个文件夹中。 Python 内置的 glob 模块中的 glob() 函数构建了一个图像数组，以便我们可以遍历它。</p>
+<p>从文件夹中的图像中读取图像对象并附加到图像数组。</p>
+<p>下面的程序解释了如何拼接视频中的多个图像 −</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import cv2</span><br><span class="line">import numpy as np</span><br><span class="line">import glob</span><br><span class="line"></span><br><span class="line">img_array = []</span><br><span class="line">for filename in glob.glob(&#x27;*.png&#x27;):</span><br><span class="line">   img = cv2.imread(filename)</span><br><span class="line">   height, width, layers = img.shape</span><br><span class="line">   size = (width,height)</span><br><span class="line">   img_array.append(img)</span><br><span class="line"> </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>通过使用 VideoWriter() 函数将图像数组的内容写入其中来创建视频流。 下面给出了同样的程序。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">out = cv2.VideoWriter(&#x27;video.avi&#x27;,cv2.VideoWriter_fourcc(*&#x27;DIVX&#x27;), 15, size)</span><br><span class="line"></span><br><span class="line">for i in range(len(img_array)):</span><br><span class="line">   out.write(img_array[i])</span><br><span class="line">out.release()</span><br><span class="line"> </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>应在当前文件夹中找到名为 <strong>“video.avi”</strong> 的文件。</p>
+<h1 id="二十七、OpenCV-Python-人脸检测"><a href="#二十七、OpenCV-Python-人脸检测" class="headerlink" title="二十七、OpenCV Python - 人脸检测"></a>二十七、OpenCV Python - 人脸检测</h1><p>OpenCV 使用基于 <strong>Haar</strong> 特征的级联分类器进行目标检测。 它是一种基于机器学习的算法，其中从大量正负图像中训练级联函数。 然后用于检测其他图像中的对象。 该算法使用级联分类器的概念。</p>
+<p>人脸、眼睛等的预训练分类器可以从 <a href="https://github.com/opencv/opencv/tree/master/data/haarcascades">https://github.com</a> 下载</p>
+<p>对于以下示例，从该 URL 下载并<strong>复制 haarcascade_frontalface_default.xml</strong> 和  <strong>haarcascade_eye.xml</strong> 。 然后，加载我们的输入图像以用于灰度模式下的人脸检测。</p>
+<p>CascadeClassifier 类的<strong>DetectMultiScale()</strong> 方法检测输入图像中的对象。 它以矩形的形式返回检测到的人脸的位置及其尺寸 (x,y,w,h)。 一旦我们得到这些位置，我们就可以用它来检测眼睛，因为眼睛总是在脸上！</p>
+<hr>
+<h2 id="示例-23"><a href="#示例-23" class="headerlink" title="示例"></a>示例</h2><p>完整的人脸检测代码如下 −</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import cv2</span><br><span class="line"></span><br><span class="line">face_cascade = cv2.CascadeClassifier(&#x27;haarcascade_frontalface_default.xml&#x27;)</span><br><span class="line">eye_cascade = cv2.CascadeClassifier(&#x27;haarcascade_eye.xml&#x27;)</span><br><span class="line"></span><br><span class="line">img = cv2.imread(&#x27;Dhoni-and-virat.jpg&#x27;)</span><br><span class="line">gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)</span><br><span class="line">faces = face_cascade.detectMultiScale(gray, 1.3, 5)</span><br><span class="line">for (x,y,w,h) in faces:</span><br><span class="line">   img = cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)</span><br><span class="line">   roi_gray = gray[y:y+h, x:x+w]</span><br><span class="line">   roi_color = img[y:y+h, x:x+w]</span><br><span class="line">   eyes = eye_cascade.detectMultiScale(roi_gray)</span><br><span class="line">   for (ex,ey,ew,eh) in eyes:</span><br><span class="line">      cv2.rectangle(roi_color,(ex,ey),(ex+ew,ey+eh),(0,255,0),2)</span><br><span class="line"></span><br><span class="line">cv2.imshow(&#x27;img&#x27;,img)</span><br><span class="line">cv2.waitKey(0)</span><br><span class="line">cv2.destroyAllWindows()</span><br><span class="line"> </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="输出-25"><a href="#输出-25" class="headerlink" title="输出"></a>输出</h2><p>在输入图像中的面部周围绘制矩形，如下所示 −</p>
+<p><img src="/2024/05/08/OpenCV%E5%9F%BA%E7%A1%80/image/1703422111572.png" alt="1703422111572"></p>
+<h1 id="二十八、OpenCV-Python-Meanshift-和-Camshift"><a href="#二十八、OpenCV-Python-Meanshift-和-Camshift" class="headerlink" title="二十八、OpenCV Python - Meanshift 和 Camshift"></a>二十八、OpenCV Python - Meanshift 和 Camshift</h1><p>在本章中，让我们了解 OpenCV-Python 中的 meanshift 和 camshift。 首先，让我们了解一下什么是均值偏移。</p>
+<hr>
+<h2 id="Meanshift"><a href="#Meanshift" class="headerlink" title="Meanshift"></a>Meanshift</h2><p>均值偏移算法识别数据集中数据点或集群高度集中的位置。 该算法在每个数据点放置一个内核，并将它们相加以进行<strong>内核密度估计</strong> (KDE)。</p>
+<p>KDE 会有数据点密度高和低的地方。 Meanshift 是一种非常有用的方法，可以跟踪视频中的特定对象。</p>
+<p>视频的每个实例都以该帧中的像素分布形式进行检查。 作为兴趣区域<strong>(ROI)</strong> 的初始窗口通常是正方形或圆形。 为此，通过硬编码指定位置，并确定最大像素分布区域。</p>
+<p>随着视频的运行，ROI 窗口向最大像素分布区域移动。 移动方向取决于我们跟踪窗口的中心与该窗口内所有 k 像素的质心之间的差异。</p>
+<p>为了在OpenCV中使用Meanshift，首先，找到我们目标的直方图（其中只考虑了Hue）并且可以将其目标反投影到每一帧上来计算Meanshift。 我们还需要提供 ROI 窗口的初始位置。</p>
+<p>我们反复计算直方图的反投影，计算Meanshift，得到轨迹窗口的新位置。 稍后，我们使用框架上的尺寸绘制一个矩形。</p>
+<h3 id="函数-1"><a href="#函数-1" class="headerlink" title="函数"></a>函数</h3><p>程序中使用的openCV函数有 −</p>
+<ul>
+<li><strong>cv.calcBackProject()</strong> − 计算直方图的反投影。</li>
+<li><strong>cv.meanShift()</strong> − 使用迭代搜索算法的初始搜索窗口和停止标准反投影对象直方图。</li>
+</ul>
+<h3 id="示例-24"><a href="#示例-24" class="headerlink" title="示例"></a>示例</h3><p>这里是Meanshift的示例程序 −</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import cv2 as cv</span><br><span class="line"></span><br><span class="line">cap = cv.VideoCapture(&#x27;traffic.mp4&#x27;)</span><br><span class="line"></span><br><span class="line">ret,frame = cap.read()</span><br><span class="line"></span><br><span class="line"># dimensions of initial location of window</span><br><span class="line">x, y, w, h = 300, 200, 100, 50</span><br><span class="line">tracker = (x, y, w, h)</span><br><span class="line"></span><br><span class="line">region = frame[y:y+h, x:x+w]</span><br><span class="line">hsv_reg = cv.cvtColor(region, cv.COLOR_BGR2HSV)</span><br><span class="line">mask = cv.inRange(hsv_reg, np.array((0., 60.,32.)), np.array((180.,255.,255.)))</span><br><span class="line">reg_hist = cv.calcHist([hsv_reg],[0],mask,[180],[0,180])</span><br><span class="line">cv.normalize(reg_hist,reg_hist,0,255,cv.NORM_MINMAX)</span><br><span class="line"></span><br><span class="line"># Setup the termination criteria</span><br><span class="line">criteria = ( cv.TERM_CRITERIA_EPS | cv.TERM_CRITERIA_COUNT, 10, 1 )</span><br><span class="line"></span><br><span class="line">while(1):</span><br><span class="line">   ret, frame = cap.read()</span><br><span class="line"></span><br><span class="line">   if ret == True:</span><br><span class="line">      hsv = cv.cvtColor(frame, cv.COLOR_BGR2HSV)</span><br><span class="line">      dst = cv.calcBackProject([hsv],[0],reg_hist,[0,180],1)</span><br><span class="line"></span><br><span class="line">      # apply meanshift</span><br><span class="line">      ret, tracker = cv.meanShift(dst, tracker, criteria)</span><br><span class="line"></span><br><span class="line">      # Draw it on image</span><br><span class="line">      x,y,w,h = tracker</span><br><span class="line">      img = cv.rectangle(frame, (x,y), (x+w,y+h), 255,2)</span><br><span class="line">      cv.imshow(&#x27;img&#x27;,img)</span><br><span class="line"></span><br><span class="line">      k = cv.waitKey(30) &amp; 0xff</span><br><span class="line">      if k==115:</span><br><span class="line">         cv.imwrite(&#x27;capture.png&#x27;, img)</span><br><span class="line">      if k == 27:</span><br><span class="line">         break</span><br><span class="line"> </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>随着程序的运行，Meanshift 算法将我们的窗口移动到具有最大密度的新位置。</p>
+<h3 id="输出-26"><a href="#输出-26" class="headerlink" title="输出"></a>输出</h3><p>这是移动窗口的快照 −</p>
+<p><img src="/2024/05/08/OpenCV%E5%9F%BA%E7%A1%80/image/1703424046977.png" alt="1703424046977"></p>
+<h2 id="Camshift"><a href="#Camshift" class="headerlink" title="Camshift"></a>Camshift</h2><p>Meanshift 算法的缺点之一是跟踪窗口的大小保持不变，无论对象与相机的距离如何。 此外，只有当对象位于该对象的区域时，窗口才会跟踪该对象。 因此，我们必须对窗口进行手动硬编码，而且要小心谨慎。</p>
+<p>这些问题的解决方案由 CAMshift（代表  <strong>Continuously Adaptive Meanshift</strong> ）给出。 一旦 meanshift 收敛，Camshift 算法就会更新窗口的大小，这样跟踪窗口的大小可能会发生变化，甚至会旋转以更好地与被跟踪对象的运动相关联。</p>
+<p>在下面的代码中，使用了 camshift() 函数而不是 meanshift() 函数。</p>
+<p>首先，它使用 meanShift 找到一个对象中心，然后调整窗口大小并找到最佳旋转。 该函数返回对象的位置、大小和方向。 使用 polylines() 绘制函数在框架上绘制位置。</p>
+<h3 id="示例-25"><a href="#示例-25" class="headerlink" title="示例"></a>示例</h3><p>使用下面的 CamShift() 函数代替早期程序中的 Meanshift() 函数 −</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># apply camshift</span><br><span class="line">ret, tracker = cv.CamShift(dst, tracker, criteria)</span><br><span class="line">pts = cv.boxPoints(ret)</span><br><span class="line">pts = np.int0(pts)</span><br><span class="line">img = cv.polylines(frame,[pts],True, 255,2)</span><br><span class="line">cv.imshow(&#x27;img&#x27;,img)</span><br><span class="line"> </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="输出-27"><a href="#输出-27" class="headerlink" title="输出"></a>输出</h3><p>显示跟踪窗口旋转矩形的修改程序结果快照如下 −</p>
+<p><img src="/2024/05/08/OpenCV%E5%9F%BA%E7%A1%80/image/1703424133582.png" alt="1703424133582"></p>
+<h1 id="二十九、OpenCV-Python-特征检测"><a href="#二十九、OpenCV-Python-特征检测" class="headerlink" title="二十九、OpenCV Python - 特征检测"></a>二十九、OpenCV Python - 特征检测</h1><p>在图像处理的上下文中，特征是图像中关键区域的数学表示。 它们是图像中视觉内容的矢量表示。</p>
+<p>特征使得对它们执行数学运算成为可能。 各种计算机视觉应用包括对象检测、运动估计、分割、图像对齐等。</p>
+<p>任何图像中的突出特征包括图像的边缘、角或部分。 OpenCV 支持<strong>Haris 角点检测</strong> 和<strong>Shi-Tomasi 角点检测</strong> 算法。OpenCV 库还提供了实现 <strong>SIFT</strong> （尺度不变特征变换）、 <strong>SURF</strong> （加速稳健特征）和 FAST 角点检测算法的功能。</p>
+<p>Harris 和 Shi-Tomasi 算法是旋转不变的。 即使图像旋转了，我们也可以找到相同的角点。 但是当图像被放大时，一个角可能不是图像的角。 下面给出的图描绘了相同的情况。</p>
+<p><img src="/2024/05/08/OpenCV%E5%9F%BA%E7%A1%80/image/1703424180519.png" alt="1703424180519"></p>
+<p>D.Lowe 的新算法 <strong>Scale Invariant Feature Transform</strong> (SIFT) 提取关键点并计算其描述符。</p>
+<p>这是通过以下步骤实现的 −</p>
+<ul>
+<li>比例空间极值检测。</li>
+<li>关键点定位。</li>
+<li>定位任务。</li>
+<li>关键点描述符。</li>
+<li>关键点匹配。</li>
+</ul>
+<p>就 OpenCV 中 SIFT 的实现而言，它从加载图像并将其转换为灰度开始。 <strong>cv.SHIFT_create()</strong> 函数创建一个 SIFT 对象。</p>
+<hr>
+<h2 id="示例-26"><a href="#示例-26" class="headerlink" title="示例"></a>示例</h2><p>调用其<strong>detect()</strong> 方法获取绘制在原始图像之上的关键点。 下面的代码实现了这个过程</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import cv2 as cv</span><br><span class="line">img = cv.imread(&#x27;home.jpg&#x27;)</span><br><span class="line">gray= cv.cvtColor(img,cv.COLOR_BGR2GRAY)</span><br><span class="line">sift = cv.SIFT_create()</span><br><span class="line">kp = sift.detect(gray,None)</span><br><span class="line">img=cv.drawKeypoints(gray,kp,img)</span><br><span class="line">cv.imwrite(&#x27;keypoints.jpg&#x27;,img)</span><br><span class="line"> </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="输出-28"><a href="#输出-28" class="headerlink" title="输出"></a>输出</h2><p>原图和画了关键点的图如下 −</p>
+<p>这是一张 <strong>原始图片</strong> 。</p>
+<p><img src="/2024/05/08/OpenCV%E5%9F%BA%E7%A1%80/image/1703424296518.png" alt="1703424296518"></p>
+<p>下面给出的图像是<strong>有关键点的图像</strong> −</p>
+<p><img src="/2024/05/08/OpenCV%E5%9F%BA%E7%A1%80/image/1703424310548.jpg" alt="1703424310548"></p>
+<h1 id="三十、OpenCV-Python-特征匹配"><a href="#三十、OpenCV-Python-特征匹配" class="headerlink" title="三十、OpenCV Python - 特征匹配"></a>三十、OpenCV Python - 特征匹配</h1><p>OpenCV 提供了两种特征匹配技术。 Bruteforce 匹配和 FLANN 匹配器技术。</p>
+<hr>
+<h2 id="示例-27"><a href="#示例-27" class="headerlink" title="示例"></a>示例</h2><p>以下示例使用 Bruteforce 方法</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"></span><br><span class="line">img1 = cv2.imread(<span class="string">&#x27;lena.jpg&#x27;</span>)</span><br><span class="line">img2 = cv2.imread(<span class="string">&#x27;lena-test.jpg&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Convert it to grayscale</span></span><br><span class="line">img1_bw = cv2.cvtColor(img1,cv2.COLOR_BGR2GRAY)</span><br><span class="line">img2_bw = cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY)</span><br><span class="line"></span><br><span class="line">orb = cv2.ORB_create()</span><br><span class="line"></span><br><span class="line">queryKeypoints, queryDescriptors = orb.detectAndCompute(img1_bw,<span class="literal">None</span>)</span><br><span class="line">trainKeypoints, trainDescriptors = orb.detectAndCompute(img2_bw,<span class="literal">None</span>)</span><br><span class="line"></span><br><span class="line">matcher = cv2.BFMatcher()</span><br><span class="line">matches = matcher.<span class="keyword">match</span>(queryDescriptors,trainDescriptors)</span><br><span class="line"></span><br><span class="line">img = cv2.drawMatches(img1, queryKeypoints,</span><br><span class="line">img2, trainKeypoints, matches[:<span class="number">20</span>],<span class="literal">None</span>)</span><br><span class="line"></span><br><span class="line">img = cv2.resize(img, (<span class="number">1000</span>,<span class="number">650</span>))</span><br><span class="line"></span><br><span class="line">cv2.imshow(<span class="string">&quot;Feature Match&quot;</span>, img)</span><br><span class="line"> </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="输出-29"><a href="#输出-29" class="headerlink" title="输出"></a>输出</h2><p><img src="/2024/05/08/OpenCV%E5%9F%BA%E7%A1%80/image/1703424626581.png" alt="1703424626581"></p>
+<h1 id="三十一、OpenCV-Python-使用-KNN-进行数字识别"><a href="#三十一、OpenCV-Python-使用-KNN-进行数字识别" class="headerlink" title="三十一、OpenCV Python - 使用 KNN 进行数字识别"></a>三十一、OpenCV Python - 使用 KNN 进行数字识别</h1><p>KNN 代表<strong>K 最近邻</strong> 是一种基于监督学习的机器学习算法。 它尝试将新数据点放入与可用类别最相似的类别中。 所有可用数据都被分为不同的类别，并根据相似性将新数据点放入其中一个类别中。</p>
+<p>KNN 算法的工作原理如下 −</p>
+<ul>
+<li>最好选择一个奇数作为要检查的邻居的数量 K。</li>
+<li>计算他们的欧几里德距离。</li>
+<li>根据计算出的欧几里得距离取 K 个最近的邻居。</li>
+<li>计算每个类别中数据点的数量。</li>
+<li>具有最大数据点的类别是新数据点所属的类别。</li>
+</ul>
+<h2 id="手写数字的-OCR"><a href="#手写数字的-OCR" class="headerlink" title="手写数字的 OCR"></a>手写数字的 OCR</h2><p>作为使用 OpenCV 实现 KNN 算法的示例，我们将使用下面的图像 digits.png，它由 5000 个手写数字图像组成，每个图像为 20X20 像素。</p>
+<p><img src="/2024/05/08/OpenCV%E5%9F%BA%E7%A1%80/image/1703424888170.png" alt="1703424888170"></p>
+<p>第一个任务是将此图像拆分为 5000 个数字。 这是我们的功能集。 将其转换为 NumPy 数组。 程序如下 −</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import cv2</span><br><span class="line"></span><br><span class="line">image = cv2.imread(&#x27;digits.png&#x27;)</span><br><span class="line">gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)</span><br><span class="line"></span><br><span class="line">fset=[]</span><br><span class="line">for i in np.vsplit(gray,50):</span><br><span class="line">   x=np.hsplit(i,100)</span><br><span class="line">   fset.append(x)</span><br><span class="line"></span><br><span class="line">NP_array = np.array(fset)</span><br><span class="line"> </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>现在我们将这些数据分成训练集和测试集，每个大小（2500,20x20）如下 −</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">trainset = NP_array[:,:50].reshape(-1,400).astype(np.float32)</span><br><span class="line">testset = NP_array[:,50:100].reshape(-1,400).astype(np.float32)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>接下来，我们要为每个数字创建10个不同的标签，如下图 −</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">k = np.arange(10)</span><br><span class="line">train_labels = np.repeat(k,250)[:,np.newaxis]</span><br><span class="line">test_labels = np.repeat(k,250)[:,np.newaxis]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>我们现在可以开始 KNN 分类了。 创建分类器对象并训练数据。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">knn = cv2.ml.KNearest_create()</span><br><span class="line">knn.train(trainset, cv2.ml.ROW_SAMPLE, train_labels)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>选择k的值为3，得到分类器的输出。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ret, output, neighbours, distance = knn.findNearest(testset, k = 3)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>将输出与测试标签进行比较，以检查分类器的性能和准确性。</p>
+<p>程序显示准确检测手写数字的准确率为 91.64%。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">result = output==test_labels</span><br><span class="line">correct = np.count_nonzero(result)</span><br><span class="line">accuracy = (correct*100.0)/(output.size)</span><br><span class="line">print(accuracy)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="整体程序："><a href="#整体程序：" class="headerlink" title="整体程序："></a>整体程序：</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"></span><br><span class="line">image = cv2.imread(<span class="string">&#x27;digits.png&#x27;</span>)</span><br><span class="line">gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)</span><br><span class="line"></span><br><span class="line">fset=[]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> np.vsplit(gray,<span class="number">50</span>):</span><br><span class="line">   x=np.hsplit(i,<span class="number">100</span>)</span><br><span class="line">   fset.append(x)</span><br><span class="line"></span><br><span class="line">NP_array = np.array(fset)</span><br><span class="line"></span><br><span class="line">trainset = NP_array[:,:<span class="number">50</span>].reshape(-<span class="number">1</span>,<span class="number">400</span>).astype(np.float32)</span><br><span class="line">testset = NP_array[:,<span class="number">50</span>:<span class="number">100</span>].reshape(-<span class="number">1</span>,<span class="number">400</span>).astype(np.float32)</span><br><span class="line"></span><br><span class="line">k = np.arange(<span class="number">10</span>)</span><br><span class="line">train_labels = np.repeat(k,<span class="number">250</span>)[:,np.newaxis]</span><br><span class="line">test_labels = np.repeat(k,<span class="number">250</span>)[:,np.newaxis]</span><br><span class="line"></span><br><span class="line">knn = cv2.ml.KNearest_create()</span><br><span class="line">knn.train(trainset, cv2.ml.ROW_SAMPLE, train_labels)</span><br><span class="line"></span><br><span class="line">ret, output, neighbours, distance = knn.findNearest(testset, k = <span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">result = output==test_labels</span><br><span class="line">correct = np.count_nonzero(result)</span><br><span class="line">accuracy = (correct*<span class="number">100.0</span>)/(output.size)</span><br><span class="line"><span class="built_in">print</span>(accuracy)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="英文字母的-OCR"><a href="#英文字母的-OCR" class="headerlink" title="英文字母的 OCR"></a>英文字母的 OCR</h2><p>接下来我们将对英文字母执行相同操作，但数据和特征集略有变化。在这里，我们用 OpenCV 自带的数据文件，opencv/samples/cpp/（译者注：应为 opencv/samples/data） 目录里的 letter-recognition.data，来代替图像数据。 如果你打开它，你会看到 20000 行，乍一看，有点像垃圾数据。实际上，在每一行中，第一列是一个字母，它也是我们的标签，接下来的 16 个数字是它的不同特征。这些特征可从<a href="http://archive.ics.uci.edu/ml/">UCI 机器学习库</a>获得，你可以在<a href="http://archive.ics.uci.edu/ml/datasets/Letter+Recognition">此页面</a>中找到这些特征的详细信息。</p>
+<p>有 20000 个样本可用，因此我们首先将 10000 个数据作为训练样本，剩余 10000 个作为测试样本。我们应该将字母转为 ascii 字符，因为我们无法直接处理字母。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2 <span class="keyword">as</span> cv</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="comment"># Load the data, converters convert the letter to a number</span></span><br><span class="line">data= np.loadtxt(<span class="string">&#x27;letter-recognition.data&#x27;</span>, dtype= <span class="string">&#x27;float32&#x27;</span>, delimiter = <span class="string">&#x27;,&#x27;</span>,</span><br><span class="line">                    converters= &#123;<span class="number">0</span>: <span class="keyword">lambda</span> ch: <span class="built_in">ord</span>(ch)-<span class="built_in">ord</span>(<span class="string">&#x27;A&#x27;</span>)&#125;)</span><br><span class="line"><span class="comment"># split the data to two, 10000 each for train and test</span></span><br><span class="line">train, test = np.vsplit(data,<span class="number">2</span>)</span><br><span class="line"><span class="comment"># split trainData and testData to features and responses</span></span><br><span class="line">responses, trainData = np.hsplit(train,[<span class="number">1</span>])</span><br><span class="line">labels, testData = np.hsplit(test,[<span class="number">1</span>])</span><br><span class="line"><span class="comment"># Initiate the kNN, classify, measure accuracy.</span></span><br><span class="line">knn = cv.ml.KNearest_create()</span><br><span class="line">knn.train(trainData, cv.ml.ROW_SAMPLE, responses)</span><br><span class="line">ret, result, neighbours, dist = knn.findNearest(testData, k=<span class="number">5</span>)</span><br><span class="line">correct = np.count_nonzero(result == labels)</span><br><span class="line">accuracy = correct*<span class="number">100.0</span>/<span class="number">10000</span></span><br><span class="line"><span class="built_in">print</span>( accuracy )</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>此程序给我的准确率为 93.06％。 同样，如果您想提高准确率，可以在每个级别迭代添加错误数据。</p>
+<p><img src="/2024/05/08/OpenCV%E5%9F%BA%E7%A1%80/image/1715165791927.png" alt="1715165791927"></p>
+]]></content>
+      <categories>
+        <category>OpenCV</category>
+      </categories>
+      <tags>
+        <tag>OpenCV 初级教程</tag>
+      </tags>
+  </entry>
 </search>
